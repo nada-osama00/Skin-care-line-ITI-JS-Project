@@ -1,0 +1,56 @@
+[
+    {
+    "id": "1",
+    "name": "Enriched Hand & Body Wash",
+    "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-03-3.jpg?v=1740035097",
+    "images": [
+      "https://glowing-demo5.myshopify.com/cdn/shop/files/product-03-3.jpg?v=1740035097",
+      "https://glowing-demo5.myshopify.com/cdn/shop/files/product-03-1.jpg?v=1740035097",
+      "https://glowing-demo5.myshopify.com/cdn/shop/files/product-03-2.jpg?v=1740035097"
+    ],
+    "stock": 20,
+    "price": 23.00,
+    "oldprice":30.00,
+    "for":"For Normal, Oily, Combination Skin Types",
+    "description": "Complexion-perfecting natural foundation enriched with antioxidant-packed superfruits, vitamins, and other skin-nourishing nutrients. Creamy liquid formula sets with a pristine matte finish for soft, velvety smooth skin. Say hello to flawless, long-lasting foundation that comes in 7 melt-into-your-skin shades. This lightweight, innovative formula creates a smooth, natural matte finish that won’t settle into lines. It’s the perfect fit for your skin. 1 fl. oz.<br><br>This natural and vegan body scrub tackles cellulite and stretch marks too, thanks to exfoliating coffee grinds and nourishing macadamia oil. Use me 2-3 times a week and watch skin shine brighter than Bondi beach.",
+    "benefitsTitle": "Benefits",
+    "benefitsList": [
+      "Buildable medium-to-full coverage",
+      "Weightless, airy feel—no caking!",
+      "Long-wearing",
+      "Evens skin tone",
+      "Available in 07 shades (all exclusive to Makeaholic!)"
+    ],
+    "category": "Skincare",
+    "issale":true,
+    "isnew":false,
+    "sizes":["70gm","100gm","200gm"]
+  },
+  [
+  {
+    "id": "2",
+    "name": "Nourishing Moisture Mask",
+    "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-1.jpg?v=1740035129",
+    "images": [
+        "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-1.jpg?v=1740035129",
+        "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-2.jpg?v=1740035129",
+        "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-3.jpg?v=1740035129"
+    ],
+    "stock": 0,
+    "price": 39.00,
+    "oldprice": 39.00,
+    "for":"For Normal, Oily, Combination Skin Types",
+    "description": "Complexion-perfecting natural foundation enriched with antioxidant-packed superfruits, vitamins, and other skin-nourishing nutrients. Creamy liquid formula sets with a pristine matte finish for soft, velvety smooth skin. Say hello to flawless, long-lasting foundation that comes in 7 melt-into-your-skin shades. This lightweight, innovative formula creates a smooth, natural matte finish that won’t settle into lines. It’s the perfect fit for your skin. 1 fl. oz.This natural and vegan body scrub tackles cellulite and stretch marks too, thanks to exfoliating coffee grinds and nourishing macadamia oil. Use me 2-3 times a week and watch skin shine brighter than Bondi beach.",
+    "benefitsTitle": "Benefits",
+    "benefitsList": ["Buildable medium-to-full coverage",
+      "Weightless, airy feel—no caking!",
+      "Long-wearing",
+     "Evens skin tone",
+     "Available in 07 shades (all exclusive to Makeaholic!)"],
+    "category": "Skincare",
+    "issale": false,
+    "isnew": true,
+    "sizes": ["50gm","120gm"]
+  }
+]
+]

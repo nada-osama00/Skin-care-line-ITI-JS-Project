@@ -235,7 +235,7 @@
             <nav class="actions-pages">
                 <ul class="actions-pages-ul">
                     <li>
-                        <a onclick="openSearch()">
+                        <a onclick="openSearchMainScript()">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32">
                                 <path
                                     d="M28.529 27.47l-5.566-5.566c1.731-1.97 2.787-4.57 2.787-7.417 0-6.221-5.043-11.264-11.264-11.264s-11.264 5.043-11.264 11.264c0 6.221 5.043 11.264 11.264 11.264 2.846 0 5.446-1.056 7.429-2.797l-0.013 0.011 5.566 5.566c0.136 0.136 0.323 0.22 0.53 0.22 0.414 0 0.75-0.336 0.75-0.75 0-0.207-0.084-0.395-0.22-0.53v0zM4.75 14.5c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75c0 5.385-4.365 9.75-9.75 9.75v0c-5.382-0.006-9.744-4.368-9.75-9.749v-0.001z">
@@ -248,12 +248,13 @@
                                 <h3>
                                     Search
                                 </h3>
-                                <button class="close-search-dialog" onclick="closeSearch()">
+                                <button class="close-search-dialog" onclick="closeSearchMainScript()">
                                     <i class="fa-solid fa-x"></i>
                                 </button>
                             </div>
 
-                            <input type="text" placeholder="Search our site...">
+                            <input type="text" 
+                            id="search-input" placeholder="Search our site...">
 
                             <h4>
                                 Popular searches
@@ -281,91 +282,8 @@
                                 Most searched products
                             </h4>
 
-                            <div class="most-searched-products">
-                                <div class="most-search-product">
-                                    <div class="image">
-                                        <div class="img-box">
-                                            <img src="./media/product-12-1.webp" class="main">
-                                            <img src="./media/product-12-4.webp" class="hover-img">
-                                        </div>
-                                    </div>
-                                    <div class="info-search-product">
-                                        <h4>
-                                            $21.00
-                                        </h4>
-                                        <p>
-                                            Natural Coconut Cleansing Oil
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="most-search-product">
-                                    <div class="image">
-                                        <div class="img-box">
-                                            <img src="./media/product-04-1.webp" class="main">
-                                            <img src="./media/product-04-3.webp" class="hover-img">
-                                        </div>
-                                    </div>
-                                    <div class="info-search-product">
-                                        <h4>
-                                            <span class="old-price">$60.00</span> <span class="price">$39.00</span>
-                                        </h4>
-                                        <p>
-                                            Shield Shampoo
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="most-search-product">
-                                    <div class="image">
-                                        <div class="img-box">
-                                            <img src="./media/product-10-1.webp" class="main">
-                                            <img src="./media/product-10-3.webp" class="hover-img">
-                                        </div>
-                                    </div>
-                                    <div class="info-search-product">
-                                        <h4>
-                                            <span class="old-price">$75.00</span> <span class="price">$45.00</span>
-                                        </h4>
-                                        <p>
-                                            Moisturizing Polishing Treatment
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="most-search-product">
-                                    <div class="image">
-                                        <div class="img-box">
-                                            <img src="./media/product-06-1.webp" class="main">
-                                            <img src="./media/product-06-2.webp" class="hover-img">
-                                        </div>
-                                    </div>
-                                    <div class="info-search-product">
-                                        <h4>
-                                            $27.00
-                                        </h4>
-                                        <p>
-                                            Enriched Duo
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="most-search-product">
-                                    <div class="image">
-                                        <div class="img-box">
-                                            <img src="./media/product-05-1.webp" class="main">
-                                            <img src="./media/product-05-2.webp" class="hover-img">
-                                        </div>
-                                    </div>
-                                    <div class="info-search-product">
-                                        <h4>
-                                            <span class="old-price">$85.00</span> <span class="price">$25.00</span>
-                                        </h4>
-                                        <p>
-                                            Enriched Hand Wash
-                                        </p>
-                                    </div>
-                                </div>
-
+                            <div class="most-searched-products" id="search-results">
+                             
                             </div>
 
 

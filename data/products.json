@@ -1,5 +1,607 @@
 [
     {
-        "id":""
+        "id": "1",
+        "name": "Enriched Hand & Body Wash",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-03-3.jpg",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-03-3.jpg",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-03-1.jpg"
+        ],
+        "category": "Skincare",
+        "vendor": "pharma cosmetics",
+        "for": "For Normal, Oily, Combination Skin Types",
+        "description": "A refreshing and nourishing wash that cleanses without stripping natural oils. Formulated with botanical extracts to leave your skin feeling soft and hydrated.",
+        "benefitsTitle": "Benefits",
+        "benefitsList": [
+            "Deeply cleanses skin",
+            "Maintains natural moisture barrier",
+            "Gentle enough for daily use",
+            "Rich, creamy lather"
+        ],
+        "issale": true,
+        "isnew": false,
+        "variants": [
+            {
+                "size": "70gm",
+                "price": 23.00,
+                "oldprice": 30.00,
+                "stock": 10
+            },
+            {
+                "size": "100gm",
+                "price": 35.00,
+                "oldprice": 40.00,
+                "stock": 5
+            },
+            {
+                "size": "200gm",
+                "price": 55.00,
+                "oldprice": 65.00,
+                "stock": 0
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Nourishing Moisture Mask",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-1.jpg?v=1740035129",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-1.jpg?v=1740035129",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-2.jpg?v=1740035129",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-3.jpg?v=1740035129"
+        ],
+        "for": "Dry and Dehydrated Skin",
+        "description": "An intensive moisture mask designed to rescue stressed skin. Infused with vitamins and nutrients to provide an instant glow and long-lasting hydration.",
+        "benefitsTitle": "Benefits",
+        "benefitsList": [
+            "Instant hydration boost",
+            "Smoothes fine lines",
+            "Calms redness and irritation",
+            "Leaves skin velvety soft"
+        ],
+        "category": "Skincare",
+        "vendor": "Dr Alvish cosmetics",
+        "issale": false,
+        "isnew": true,
+        "variants": [
+            {
+                "size": "50gm",
+                "price": 39.00,
+                "oldprice": 39.00,
+                "stock": 15
+            },
+            {
+                "size": "120gm",
+                "price": 75.00,
+                "oldprice": 75.00,
+                "stock": 8
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Mary & May Tranexamic Acid + Glutathione Eye Cream",
+        "thumbnail": "https://assets.wuiltstore.com/cmbv4axic12hj01ljgtcj06qk_612B91p_jCL._SL1500.webp",
+        "images": [
+            "https://assets.wuiltstore.com/cmbv4axic12hj01ljgtcj06qk_612B91p_jCL._SL1500.webp",
+            "https://assets.wuiltstore.com/cmbv4awug12hi01lj2jfocc0b_1000251896-300x300.jpg",
+            "https://m.media-amazon.com/images/I/51xNwZGGFjL._AC_UF894,1000_QL80_.jpg"
+        ],
+        "for": "All Skin Types, specifically for dark circles and dull under-eye area",
+        "description": "A cruelty-free eye cream enriched with 1,000ppm Tranexamic Acid and Glutathione to brighten dark circles and improve the appearance of freckles and blemishes around the eyes. This functional eye cream helps to hydrate the delicate eye area while preventing further pigmentation. Formulated with EWG green grade ingredients only, making it safe for sensitive skin.<br><br>The lightweight texture absorbs quickly without leaving a greasy residue, providing a refreshing finish for both morning and night routines.",
+        "benefitsTitle": "Benefits",
+        "benefitsList": [
+            "Brightens dark circles significantly",
+            "Inhibits melanin production to prevent spots",
+            "Intense hydration for the delicate eye area",
+            "Hypoallergenic and EWG Green Grade ingredients",
+            "Fragrance-free and suitable for sensitive eyes"
+        ],
+        "category": "Skincare",
+        "issale": false,
+        "isnew": true,
+        "variants": [
+            {
+                "size": "12gm",
+                "price": 25.00,
+                "oldprice": 25.00,
+                "stock": 15
+            },
+            {
+                "size": "30gm",
+                "price": 39.00,
+                "oldprice": 39.00,
+                "stock": 25
+            }
+        ],
+        "vendor": "Mary & May"
+    },
+    {
+        "id": "4",
+        "name": "La Roche-Posay Anthelios UVMune 400 Invisible Fluid SPF50+",
+        "thumbnail": "https://m.media-amazon.com/images/I/519s2klq04L.jpg",
+        "images": [
+            "https://m.media-amazon.com/images/I/61FD53opkLL.jpg",
+            "https://www.geekyposh.com/wp-content/uploads/2023/04/la-roche-posay-anthelios-uvmune-400-sunscreen-review.jpg",
+            "https://f.nooncdn.com/p/pnsku/N33651082A/45/_/1764242446/35c1845e-07f9-4f74-85a6-b12e84e9bbb7.jpg?width=800"
+        ],
+        "vendor": "La Roche-Posay",
+        "category": "Skincare",
+        "for": "Sensitive and Reactive Skin",
+        "description": "The ultimate protection against ultra-long UVA rays with the new MEXORYL 400 filter. This fragrance-free fluid is ultra-resistant to water, sweat, and sand. Its invisible, non-greasy texture makes it perfect for daily use without leaving any white marks.<br><br>Tested under dermatological control on sensitive and reactive skin.",
+        "benefitsTitle": "Why it's special",
+        "benefitsList": [
+            "Ultra-long UVA protection (MEXORYL 400)",
+            "Invisible finish - no white cast",
+            "Fragrance-free and Paraben-free",
+            "Anti-eye stinging formula",
+            "Non-sticky and non-greasy"
+        ],
+        "issale": true,
+        "isnew": false,
+        "variants": [
+            {
+                "size": "50ml",
+                "price": 45.00,
+                "oldprice": 55.00,
+                "stock": 15
+            },
+            {
+                "size": "70ml",
+                "price": 75.00,
+                "oldprice": 80.00,
+                "stock": 20
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "name": "Velvet Matte Lipstick",
+        "thumbnail": "https://www.prada.com/content/dam/pradabkg_products/1/1A2/1A2001/2IAEFB003/1A2001_2IAE_FB003_R_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+        "images": [
+            "https://www.prada.com/content/dam/pradabkg_products/1/1A2/1A2001/2IAEFB003/1A2001_2IAE_FB003_R_OOO_SLD.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+            "https://www.prada.com/content/dam/pradabkg_products/1/1A2/1A2001/2IAEFB003/1A2001_2IAE_FB003_R_OOO_SLP.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+            "https://www.prada.com/content/dam/pradabkg_products/1/1A2/1A2001/2IAEFB003/1A2001_2IAE_FB003_R_OOO_SLDA.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+            "https://www.prada.com/content/dam/pradabkg_products/1/1A2/1A2001/2IAEFB003/1A2001_2IAE_FB003_R_OOO_SLT.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg"
+        ],
+        "variants": [
+            {
+                "size": "3g",
+                "price": 18,
+                "oldprice": 24,
+                "stock": 60
+            },
+            {
+                "size": "5g",
+                "price": 25,
+                "oldprice": 30,
+                "stock": 60
+            }
+        ],
+        "description": "A highly pigmented matte lipstick with a smooth velvet finish that lasts all day without drying your lips.",
+        "benefitsTitle": "Why you'll love it",
+        "benefitsList": [
+            "Long lasting matte finish",
+            "Highly pigmented color",
+            "Smooth and comfortable formula",
+            "Available in multiple shades"
+        ],
+        "category": "Lip",
+        "issale": true,
+        "isnew": false,
+        "vendor": "Prada",
+        "for": "All Skin Types"
+    },
+    {
+        "id": "6",
+        "name": "Flawless Liquid Foundation",
+        "thumbnail": "https://www.prada.com/content/dam/pradabkg_products/1/1A5/1A5001/2IAVFBMN3/1A5001_2IAV_FBMN3_P_ML030_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+        "images": [
+            "https://www.prada.com/content/dam/pradabkg_products/1/1A5/1A5001/2IAVFBMN3/1A5001_2IAV_FBMN3_P_ML030_SLD.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+            "https://www.prada.com/content/dam/pradabkg_products/1/1A5/1A5001/2IAVFBMN3/1A5001_2IAV_FBMN3_P_ML030_SLP.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+            "https://www.prada.com/content/dam/pradabkg_products/1/1A5/1A5001/2IAVFBMN3/1A5001_2IAV_FBMN3_P_ML030_SLDA.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+            "https://www.prada.com/content/dam/pradabkg_products/1/1A5/1A5001/2IAVFBMN3/1A5001_2IAV_FBMN3_P_ML030_SLT.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg"
+        ],
+        "variants": [
+            {
+                "size": "30ml",
+                "price": 32,
+                "oldprice": null,
+                "stock": 45
+            },
+            {
+                "size": "50ml",
+                "price": 48,
+                "oldprice": 55,
+                "stock": 40
+            }
+        ],
+        "description": "Lightweight liquid foundation that provides medium to full coverage while keeping your skin looking natural.",
+        "benefitsTitle": "Key Benefits",
+        "benefitsList": [
+            "Buildable coverage",
+            "Long wear formula",
+            "Smooth natural finish",
+            "Suitable for all skin types"
+        ],
+        "category": "Face",
+        "issale": false,
+        "isnew": true,
+        "vendor": "Prada",
+        "for": "All Skin Types"
+    },
+    {
+        "id": "7",
+        "name": "Volume Boost Mascara",
+        "thumbnail": "https://www.maybelline.com/-/media/project/loreal/brand-sites/mny/americas/us/eye-makeup/mascara/full-n-soft-washable-wascara/maybelline-mascara-full-n-soft-very-black-041554699159-c.jpg?rev=-1&cx=0&cy=0&cw=760&ch=1130&hash=F205B5DFDDA6CE6899A884FC9F60288A",
+        "images": [
+            "https://www.maybelline.com/-/media/project/loreal/brand-sites/mny/americas/us/eye-makeup/mascara/full-n-soft-washable-wascara/maybelline-mascara-full-n-soft-very-black-041554699159-t.jpg?rev=-1&cx=0&cy=0&cw=760&ch=1130&hash=92ED88E6336A75E26B04EB16A05D1435",
+            "https://www.maybelline.com/-/media/project/loreal/brand-sites/mny/americas/us/eye-makeup/mascara/full-n-soft-washable-wascara/maybelline-mascara-full-n-soft-very-black-041554699159-d.jpg?rev=-1&cx=0&cy=0&cw=760&ch=1130&hash=8ADB125B0E008D25B0916E1E0A0A6135",
+            "https://www.maybelline.com/-/media/project/loreal/brand-sites/mny/americas/us/eye-makeup/mascara/full-n-soft-washable-wascara/maybelline-mascara-full-n-soft-very-black-041554699159-o.jpg?rev=-1&cx=0&cy=0&cw=760&ch=1130&hash=DBF109F8725EB1FEE36F40A9924772F1"
+        ],
+        "variants": [
+            {
+                "size": "10ml",
+                "price": 16,
+                "oldprice": 20,
+                "stock": 30
+            },
+            {
+                "size": "15ml",
+                "price": 22,
+                "oldprice": 26,
+                "stock": 30
+            }
+        ],
+        "description": "A volumizing mascara that lifts and separates lashes for a bold dramatic look.",
+        "benefitsTitle": "Why it's amazing",
+        "benefitsList": [
+            "Adds volume and length",
+            "Clump free formula",
+            "Long lasting wear",
+            "Easy to remove"
+        ],
+        "category": "Eye",
+        "issale": true,
+        "isnew": false,
+        "vendor": "Maybelline",
+        "for": "All Eye Types"
+    },
+    {
+        "id": "8",
+        "name": "Silky Powder Blush",
+        "thumbnail": "https://www.faces.eg/dw/image/v2/BJSM_PRD/on/demandware.static/-/Sites-faces-master-catalog/default/dw2f8863d2/images/027714782983_1.jpg?sw=800&sh=800",
+        "images": [
+            "https://www.faces.eg/dw/image/v2/BJSM_PRD/on/demandware.static/-/Sites-faces-master-catalog/default/dw717a9093/images/027714782983_2.jpg?sw=800&sh=800",
+            "https://www.faces.eg/dw/image/v2/BJSM_PRD/on/demandware.static/-/Sites-faces-master-catalog/default/dw7474dd72/images/027714782983_3.jpg?sw=800&sh=800"
+        ],
+        "variants": [
+            {
+                "size": "5g",
+                "price": 22,
+                "oldprice": null,
+                "stock": 50
+            },
+            {
+                "size": "10g",
+                "price": 35,
+                "oldprice": 40,
+                "stock": 45
+            }
+        ],
+        "description": "A silky smooth powder blush that adds a natural healthy glow to your cheeks.",
+        "benefitsTitle": "Features",
+        "benefitsList": [
+            "Soft blendable texture",
+            "Natural radiant finish",
+            "Long lasting color",
+            "Buildable pigment"
+        ],
+        "category": "Cheek",
+        "issale": false,
+        "isnew": true,
+        "vendor": "Faces",
+        "for": "All Skin Types"
+    },
+    {
+        "id": "9",
+        "name": "Natural Coconut Cleansing Oil",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-12-1.jpg?v=1740035173",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-12-1.jpg?v=1740035173",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-12-4.jpg?v=1740035173",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-12-2.jpg?v=1740035173",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-12-3.jpg?v=1740035173"
+        ],
+        "variants": [
+            {
+                "size": "12gm",
+                "price": 25,
+                "oldprice": null,
+                "stock": 15
+            },
+            {
+                "size": "30gm",
+                "price": 39,
+                "oldprice": null,
+                "stock": 25
+            }
+        ],
+        "description": "A gentle cleansing oil infused with natural coconut extract that effectively removes makeup, dirt, and excess oil while keeping the skin soft and hydrated. The lightweight formula deeply cleanses without stripping the skin’s natural moisture, leaving it fresh, smooth, and nourished.",
+        "benefitsTitle": "Features",
+        "benefitsList": [
+            "Gently removes makeup and impurities",
+            "Hydrates and nourishes the skin",
+            "Lightweight non-greasy formula",
+            "Leaves skin soft and refreshed",
+            "Rich in natural coconut extract"
+        ],
+        "category": "Skincare",
+        "issale": false,
+        "isnew": false,
+        "vendor": "Pharma Cosmetics",
+        "for": "All Skin Types"
+    },
+    {
+        "id": "10",
+        "name": "Nourishing Eye Cream",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-08-1.jpg?v=1740035167",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-08-1.jpg?v=1740035167",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-08-2.jpg?v=1740035167",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-08-3.jpg?v=1740035167",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-08-4.jpg?v=1740035167"
+        ],
+        "variants": [
+            {
+                "size": "15gm",
+                "price": 19,
+                "oldprice": null,
+                "stock": 40
+            }
+        ],
+        "description": "A nourishing eye cream designed to hydrate and revitalize the delicate skin around the eyes. Enriched with vitamins and natural extracts, it helps reduce the appearance of dark circles, puffiness, and fine lines while keeping the eye area smooth, soft, and refreshed.",
+        "benefitsTitle": "Features",
+        "benefitsList": [
+            "Hydrates and nourishes the delicate eye area",
+            "Helps reduce dark circles and puffiness",
+            "Smooths the appearance of fine lines",
+            "Lightweight and fast-absorbing formula",
+            "Leaves skin soft and refreshed"
+        ],
+        "category": "Skincare",
+        "issale": false,
+        "isnew": false,
+        "vendor": "Pharma Cosmetics",
+        "for": "All Skin Types"
+    },
+    {
+        "id": "11",
+        "name": "Nourishing Moisture Mask",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-1.jpg?v=1740035129",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-1.jpg?v=1740035129",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-2.jpg?v=1740035129",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-09-3.jpg?v=1740035129"
+        ],
+        "variants": [
+            {
+                "size": "30gm",
+                "price": 29,
+                "oldprice": 35,
+                "stock": 40
+            },
+            {
+                "size": "60gm",
+                "price": 39,
+                "oldprice": 45,
+                "stock": 55
+            }
+        ],
+        "description": "An intensely hydrating face mask designed to restore moisture and improve skin softness. Enriched with natural botanical extracts and vitamins, this mask deeply nourishes dry and tired skin, leaving it smooth, plump, and refreshed after every use.",
+        "benefitsTitle": "Key Benefits",
+        "benefitsList": [
+            "Deeply hydrates dry and dehydrated skin",
+            "Improves skin softness and elasticity",
+            "Helps restore the skin’s natural glow",
+            "Rich in botanical extracts and vitamins",
+            "Perfect for weekly skin recovery treatment"
+        ],
+        "category": "Skincare",
+        "issale": true,
+        "isnew": true,
+        "vendor": "Dr Alvish Cosmetics",
+        "for": "Dry and Dehydrated Skin"
+    },
+    {
+        "id": "12",
+        "name": "Perfecting Facial Oil",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-02-1.jpg?v=1740035109",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-02-1.jpg?v=1740035109",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-02-2.jpg?v=1740035109",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-02-3.jpg?v=1740035109"
+        ],
+        "variants": [
+            {
+                "size": "15ml",
+                "price": 19,
+                "oldprice": 21,
+                "stock": 12
+            },
+            {
+                "size": "30ml",
+                "price": 29,
+                "oldprice": 35,
+                "stock": 8
+            }
+        ],
+        "description": "A lightweight facial oil formulated with nourishing botanical oils and antioxidants to restore radiance and hydration. This fast-absorbing formula helps improve skin texture, reduce dullness, and support a healthy, glowing complexion without leaving a greasy finish.",
+        "benefitsTitle": "Key Benefits",
+        "benefitsList": [
+            "Deeply nourishes and hydrates the skin",
+            "Improves skin radiance and glow",
+            "Helps smooth rough and uneven texture",
+            "Rich in antioxidants and natural oils",
+            "Lightweight formula that absorbs quickly"
+        ],
+        "category": "Skincare",
+        "issale": true,
+        "isnew": true,
+        "vendor": "Mary & May",
+        "for": "Normal, Dry, and Dull Skin"
+    },
+    {
+        "id": "13",
+        "name": "Scalp Moisturizing Cream",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-11-1.jpg?v=1740035140",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-11-1.jpg?v=1740035140",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-11-2.jpg?v=1740035140",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-11-3.jpg?v=1740035140",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-11-4.jpg?v=1740035140"
+        ],
+        "variants": [
+            {
+                "size": "50ml",
+                "price": 29,
+                "oldprice": null,
+                "stock": 60
+            },
+            {
+                "size": "100ml",
+                "price": 39,
+                "oldprice": 45,
+                "stock": 35
+            }
+        ],
+        "description": "A soothing scalp moisturizing cream formulated to hydrate and rebalance dry, irritated scalps. Enriched with nourishing oils and botanical extracts, it helps relieve dryness, reduce flakiness, and support healthier, stronger hair from the roots.",
+        "benefitsTitle": "Key Benefits",
+        "benefitsList": [
+            "Deeply hydrates dry and irritated scalp",
+            "Helps reduce dandruff and flakiness",
+            "Strengthens hair roots",
+            "Improves scalp comfort and balance",
+            "Lightweight formula that absorbs quickly"
+        ],
+        "category": "Haircare",
+        "issale": true,
+        "isnew": true,
+        "vendor": "Mary & May",
+        "for": "Dry and Sensitive Scalp"
+    },
+    {
+        "id": "14",
+        "name": "Shield Conditioner",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-01-2.jpg?v=1740035092",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-01-2.jpg?v=1740035092",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-01-1.jpg?v=1740035092",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-01-3.jpg?v=1740035092"
+        ],
+        "variants": [
+            {
+                "size": "200ml",
+                "price": 27,
+                "oldprice": null,
+                "stock": 60
+            },
+            {
+                "size": "400ml",
+                "price": 42,
+                "oldprice": 48,
+                "stock": 35
+            }
+        ],
+        "description": "A protective hair conditioner designed to strengthen and nourish damaged hair. Infused with botanical extracts and moisturizing ingredients, it helps detangle strands, reduce frizz, and protect hair from dryness and environmental damage, leaving it soft, smooth, and manageable.",
+        "benefitsTitle": "Key Benefits",
+        "benefitsList": [
+            "Deeply nourishes and hydrates hair",
+            "Helps reduce frizz and dryness",
+            "Improves hair softness and shine",
+            "Strengthens weak and damaged strands",
+            "Makes hair easier to detangle and style"
+        ],
+        "category": "Haircare",
+        "issale": true,
+        "isnew": false,
+        "vendor": "Mary & May",
+        "for": "Dry and Damaged Hair"
+    },
+    {
+        "id": "15",
+        "name": "Shield Shampoo",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-04-3.jpg?v=1740035161",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-04-3.jpg?v=1740035161",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-04-1.jpg?v=1740035161",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-04-2.jpg?v=1740035161"
+        ],
+        "variants": [
+            {
+                "size": "250ml",
+                "price": 39,
+                "oldprice": 60,
+                "stock": 5
+            },
+            {
+                "size": "500ml",
+                "price": 55,
+                "oldprice": 75,
+                "stock": 4
+            }
+        ],
+        "description": "A protective shampoo formulated to gently cleanse the scalp and strengthen hair strands. Enriched with nourishing botanical extracts, it removes impurities and excess oil while helping to protect hair from dryness and environmental damage. Leaves hair soft, refreshed, and healthier after every wash.",
+        "benefitsTitle": "Key Benefits",
+        "benefitsList": [
+            "Gently cleanses hair and scalp",
+            "Helps strengthen weak and damaged hair",
+            "Removes excess oil and impurities",
+            "Improves hair softness and shine",
+            "Suitable for regular use"
+        ],
+        "category": "Haircare",
+        "issale": true,
+        "isnew": false,
+        "vendor": "Mary & May",
+        "for": "Normal to Dry Hair"
+    },
+    {
+        "id": "16",
+        "name": "Shield Protection Spray",
+        "thumbnail": "https://glowing-demo5.myshopify.com/cdn/shop/files/product-07-1.jpg?v=1740035124",
+        "images": [
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-07-1.jpg?v=1740035124",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-07-2.jpg?v=1740035124",
+            "https://glowing-demo5.myshopify.com/cdn/shop/files/product-07-3.jpg?v=1740035124"
+        ],
+        "variants": [
+            {
+                "size": "100ml",
+                "price": 29,
+                "oldprice": null,
+                "stock": 60
+            },
+            {
+                "size": "200ml",
+                "price": 49,
+                "oldprice": 59,
+                "stock": 35
+            }
+        ],
+        "description": "A lightweight hair protection spray designed to shield hair from heat styling and environmental damage. Infused with nourishing botanical extracts, it helps protect strands from dryness, reduce frizz, and keep hair smooth, shiny, and manageable throughout the day.",
+        "benefitsTitle": "Key Benefits",
+        "benefitsList": [
+            "Protects hair from heat styling damage",
+            "Helps reduce frizz and flyaways",
+            "Adds natural shine and smoothness",
+            "Lightweight formula that doesn’t weigh hair down",
+            "Keeps hair soft and manageable"
+        ],
+        "category": "Haircare",
+        "issale": true,
+        "isnew": true,
+        "vendor": "Mary & May",
+        "for": "All Hair Types"
     }
 ]

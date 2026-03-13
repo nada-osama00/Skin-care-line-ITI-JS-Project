@@ -312,6 +312,9 @@ header .actions-pages .cart-counter {
 .search-header-dialog {
     inset-inline-start: 72%;
     max-height: 100vh;
+    min-height: 100vh;
+    max-width: 30%;
+    min-width: 30%;
     border: none;
     padding: 20px;
     transform: translateX(100%);

@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glowing</title>
+    <title>Shop</title>
     <link rel="stylesheet" href="../css/shop.css">
      <link rel="stylesheet" href="../css/root.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -233,6 +234,39 @@
     </div>
         <h1 class="page-title">PRODUCTS</h1>
 </nav>
+<section id="Toolbar">
+    <div class="toolbar-left">
+        <button class="filter-btn">
+            <i class="fas fa-bars-staggered"></i> FILTER
+        </button>
+        <span class="product-count">WE FOUND <span id="count-number">0</span> PRODUCTS AVAILABLE FOR YOU.</span>
+    </div>
+
+    <div class="toolbar-right">
+        <div class="view-icons">
+            <div class="view-icon active" title="Grid View">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/>
+                    <rect x="16" y="2" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/>
+                    <rect x="2" y="16" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/>
+                    <rect x="16" y="16" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="view-icon" title="List View">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="2" y1="6" x2="26" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="2" y1="14" x2="26" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="2" y1="22" x2="26" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div> <select class="sort-select">
+            <option>Alphabetically, A-Z</option>
+            <option>Price, Low to High</option>
+        </select>
+    </div> 
+</section>
+<section id="product-container" class="product-grid">
+</section>
     </main>
 </body>
 

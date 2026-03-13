@@ -41,8 +41,95 @@
 }
 
 .page-title {
-    margin-top: 85px;
-    font-size: 32px;
+    font-family: sans-serif;
+    margin-top: 65px;
+    font-size: 30px;
     font-weight: 900px;
-    text-transform: uppercase;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////// */
+
+#Toolbar {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 0;
+}
+.toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 25px; 
+}
+.filter-btn{
+    display: inline-flex;
+    margin-left: 20px;
+    padding: 12px 20px 12px 20px; 
+    font-size: 16px;
+    background-color: #000;
+    color: white;
+    border: none;
+    gap:10px
+}
+.filter-btn:hover{
+        color: black;
+          background-color:gainsboro;
+
+}
+.product-count{
+    font-family:Helvetica, sans-serif;
+    font-weight: 550;
+    font-size: 16px;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+.view-icons {
+    display: flex;
+    align-items: center; 
+    gap: 12px; 
+}
+
+.view-icon {
+    cursor: pointer;
+    color: #b0b0b0;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 28px;  
+    height: 28px; 
+}
+
+.view-icon svg {
+    display: block; 
+    
+}
+
+
+.sort-select {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    margin-right: 30px;
+    appearance: none;
+    padding: 14px 40px 14px 20px; 
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0; 
+    background-color: #f9f9f9;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center; 
+    background-size: 12px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.sort-select:focus {
+  border-color: #a8c1b7; 
+  box-shadow: 0 0 0 4px rgba(168, 193, 183, 0.2); 
+  background-color: #f9f9f9;
 }

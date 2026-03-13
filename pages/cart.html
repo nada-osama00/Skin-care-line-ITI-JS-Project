@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="../Project/Skin-care-line-ITI-JS-Project/css/root.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+
+<body>
+
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <div class="breadcrumb-header">
+            <ol class="breadcrumb-list">
+
+                <li class="breadcrumb-item">
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    ━━ Your Shopping Cart
+                </li>
+
+            </ol>
+        </div>
+    </nav>
+
+
+    <div class="main">
+
+        <h1>YOUR SHOPPING CART</h1>
+
+
+        <div class="shipping-widget">
+
+            <p id="shippingText"></p>
+
+            <div class="progress-bar">
+
+                <div class="progress-fill" id="progressFill"></div>
+
+                <div class="truck" id="truck">
+                    <i class="fa-solid fa-truck"></i>
+                </div>
+
+            </div>
+
+            <div id="freeShippingBox" class="free-shipping-box">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRecswTV6cJiaClLsyTnuAPX9Pf78vKFkZiAg&s">
+
+                <span>You are eligible for free shipping.</span>
+
+            </div>
+
+        </div>
+
+
+
+        <section class="cart-page">
+
+            <div class="cart-table">
+
+                <div class="cart-header">
+
+                    <span>PRODUCT</span>
+                    <span>QUANTITY</span>
+                    <span>PRICE</span>
+
+                </div>
+
+                <div id="cart-items"></div>
+
+            </div>
+
+
+            <div class="cart-actions">
+
+                <a href="shop.html" class="continue-shopping">
+                    CONTINUE SHOPPING
+                </a>
+
+                <button id="clear-cart" class="clear-cart">
+                    CLEAR SHOPPING CART
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+    <script src="cart-script.js"></script>
+
+</body>
+
+</html>

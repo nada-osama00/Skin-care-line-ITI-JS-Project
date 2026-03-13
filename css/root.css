@@ -59,6 +59,9 @@ img {
     color: #ababab;
 }
 
+.uppercase{
+    text-transform: uppercase;
+}
 button {
     border: none;
 }
@@ -66,7 +69,10 @@ button {
 /* header */
 header {
     padding: 20px 0;
-
+    position: sticky;
+    top: 0;
+    z-index: 999999;
+    background-color: #fff;
 }
 
 header .container {
@@ -169,6 +175,7 @@ header .actions-pages .cart-counter {
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
+    background-color: #fff;
 
 }
 
@@ -187,7 +194,7 @@ header .actions-pages .cart-counter {
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
-
+    background-color: #fff;
 }
 
 .shop-header-container .cat-shop-header {
@@ -319,19 +326,22 @@ header .actions-pages .cart-counter {
     padding: 20px;
     transform: translateX(100%);
     opacity: 0;
-   transition: transform .4s ease, opacity .4s ease;
+    transition: transform .4s ease, opacity .4s ease;
 }
-.search-header-dialog.active  {
+
+.search-header-dialog.active {
     transform: translateX(0);
     opacity: 1;
 }
+
 .search-header-dialog.closing {
     transform: translateX(100%);
     opacity: 0;
 }
+
 .search-header-dialog::backdrop {
     background-color: #000000a2;
- backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
 }
 
 .search-header-dialog h3 {
@@ -395,4 +405,67 @@ header .actions-pages .cart-counter {
 .search-close-header {
     display: flex;
     justify-content: space-between
+}
+
+/* footer */
+footer {
+    background: #F6F6F3;
+}
+
+footer .top-footer {
+    display: flex;
+    padding-block: 100px;
+    justify-content: space-between;
+}
+
+footer .top-footer h3 {
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+footer .top-footer ul li,
+footer .top-footer p {
+    font-weight: 500;
+    margin-bottom: 9px;
+    color: #8c8b8b;
+}
+
+footer .top-footer input {
+    width: 100%;
+    font-size: 35px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(80, 79, 79, 0.112);
+    margin-top: 20px;
+}
+
+footer .bottom-footer {
+    display: flex;
+    padding-bottom: 40px;
+    justify-content: space-between;
+    align-items: center;
+    color: #7E7E7E;
+}
+
+footer .bottom-footer ul,
+footer .bottom-footer .left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .bottom-footer ul.links li {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+footer .bottom-footer .center{
+    width: 20%;
+}
+footer .bottom-footer .left p{
+    margin-right: 25px;
+}
+footer .bottom-footer .right ul li{
+    margin-right: 25px;
 }

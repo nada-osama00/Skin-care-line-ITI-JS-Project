@@ -169,13 +169,7 @@
                 "size": "3g",
                 "price": 18,
                 "oldprice": 24,
-                "stock": 60
-            },
-            {
-                "size": "5g",
-                "price": 25,
-                "oldprice": 30,
-                "stock": 60
+                "stock": 120
             }
         ],
         "description": "A highly pigmented matte lipstick with a smooth velvet finish that lasts all day without drying your lips.",
@@ -186,7 +180,7 @@
             "Smooth and comfortable formula",
             "Available in multiple shades"
         ],
-        "category": "Lip",
+        "category": "Makeup",
         "issale": true,
         "isnew": false,
         "vendor": "Prada",
@@ -207,13 +201,7 @@
                 "size": "30ml",
                 "price": 32,
                 "oldprice": null,
-                "stock": 45
-            },
-            {
-                "size": "50ml",
-                "price": 48,
-                "oldprice": 55,
-                "stock": 40
+                "stock": 85
             }
         ],
         "description": "Lightweight liquid foundation that provides medium to full coverage while keeping your skin looking natural.",
@@ -224,7 +212,7 @@
             "Smooth natural finish",
             "Suitable for all skin types"
         ],
-        "category": "Face",
+        "category": "Makeup",
         "issale": false,
         "isnew": true,
         "vendor": "Prada",
@@ -244,13 +232,7 @@
                 "size": "10ml",
                 "price": 16,
                 "oldprice": 20,
-                "stock": 30
-            },
-            {
-                "size": "15ml",
-                "price": 22,
-                "oldprice": 26,
-                "stock": 30
+                "stock": 60
             }
         ],
         "description": "A volumizing mascara that lifts and separates lashes for a bold dramatic look.",
@@ -261,7 +243,7 @@
             "Long lasting wear",
             "Easy to remove"
         ],
-        "category": "Eye",
+        "category": "Makeup",
         "issale": true,
         "isnew": false,
         "vendor": "Maybelline",
@@ -279,14 +261,8 @@
             {
                 "size": "5g",
                 "price": 22,
-                "oldprice": null,
-                "stock": 50
-            },
-            {
-                "size": "10g",
-                "price": 35,
-                "oldprice": 40,
-                "stock": 45
+                "oldprice": 22,
+                "stock": 95
             }
         ],
         "description": "A silky smooth powder blush that adds a natural healthy glow to your cheeks.",
@@ -297,7 +273,7 @@
             "Long lasting color",
             "Buildable pigment"
         ],
-        "category": "Cheek",
+        "category": "Makeup",
         "issale": false,
         "isnew": true,
         "vendor": "Faces",

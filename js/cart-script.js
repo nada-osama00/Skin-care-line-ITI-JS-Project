@@ -28,20 +28,16 @@ function updateShippingBar() {
     const barWidth = progressBar.offsetWidth;
     const truckWidth = truck.offsetWidth;
 
-    // Truck position (leading the fill)
     let truckPos = (percent / 100) * barWidth - truckWidth / 2;
 
-    // prevent truck from going outside the bar
     if (truckPos < 0) truckPos = 0;
     if (truckPos > barWidth - truckWidth) truckPos = barWidth - truckWidth;
 
     truck.style.left = truckPos + "px";
 
-    // Fill width is just behind the truck
     let fillPercent = ((truckPos + truckWidth / 2) / barWidth) * 100;
     progressFill.style.width = fillPercent + "%";
 
-    // Free shipping display logic
     if (cartTotal >= freeShippingGoal) {
         progressFill.classList.add("green");
         document.getElementById("shippingText").style.display = "none";
@@ -70,49 +66,8 @@ function renderCart() {
         const row = document.createElement("div");
         row.classList.add("cart-item");
 
-        row.innerHTML = `
+        row.innerHTML = 
 
-<div class="product-info">
-
-<img src="${item.image}">
-
-<div>
-
-<div class="product-title">${item.name}</div>
-
-<div class="product-price">$${item.price}</div>
-
-<div class="product-color">Color : ${item.color}</div>
-
-</div>
-
-</div>
-
-
-<div class="quantity-box">
-
-<div class="quantity-controls">
-
-<button onclick="decreaseQty(${index})">-</button>
-
-<span>${item.qty}</span>
-
-<button onclick="increaseQty(${index})">+</button>
-
-</div>
-
-</div>
-
-
-<div class="price-area">
-
-<span>$${item.price * item.qty}</span>
-
-<span class="remove-item" onclick="removeItem(${index})">×</span>
-
-</div>
-
-`;
 
         cartItems.appendChild(row);
 
@@ -124,7 +79,6 @@ function renderCart() {
 
 }
 
-/* QUANTITY */
 
 function increaseQty(i) {
 
@@ -146,7 +100,6 @@ function decreaseQty(i) {
 
 }
 
-/* REMOVE */
 
 function removeItem(i) {
 
@@ -156,7 +109,6 @@ function removeItem(i) {
 
 }
 
-/* CLEAR */
 
 document.getElementById("clear-cart").onclick = () => {
 
@@ -167,7 +119,6 @@ document.getElementById("clear-cart").onclick = () => {
 };
 
 
-/* SHIPPING PROGRESS */
 
 function updateShipping() {
 

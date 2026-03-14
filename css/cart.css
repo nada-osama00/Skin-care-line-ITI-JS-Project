@@ -382,26 +382,21 @@ body {
     letter-spacing: 10px;
 }
 
+.x-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0 12px;
+    vertical-align: middle;
+    margin-left: -6px;
+}
 
 .payments img {
-    height: 30px;
+    height: 40px;
     margin-left: 10px;
 }
 
 
 .payments {
     margin-left: auto;
-}
-
-.scroll-top {
-    position: fixed;
-    right: 40px;
-    bottom: 40px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid black;
-    background: white;
-    font-size: 20px;
-    cursor: pointer;
 }

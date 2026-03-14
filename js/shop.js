@@ -39,7 +39,7 @@ function createProductCard(product) {
 
         var hoverImg = document.createElement("img");
        if (product.images && product.images.length > 0) {
-       hoverImg.src = product.images[0]; 
+       hoverImg.src = product.images[1]; 
        } else {
          hoverImg.src = product.thumbnail;
         }
@@ -49,14 +49,43 @@ function createProductCard(product) {
       desc.classList.add("product-description");
       desc.innerHTML = `<strong>For:</strong> ${product.for}<br>${product.description}`;
 
+     
       var quickActions = document.createElement("div");
      quickActions.classList.add("quick-actions");
      quickActions.innerHTML = `
-    <button><i class="fa-solid fa-cart-arrow-down"></i></button>
-    <button><i class="far fa-eye"></i></button>
-    <button><i class="far fa-heart"></i></button>`;
+    <button class="add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+    <button class="quick-view" title="Quick View"><i class="far fa-eye"></i></button>
+    <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>`;
 
-        imgWrapper.append(image,hoverImg);
+    var cartBtn = quickActions.querySelector(".add-to-cart");
+    var viewBtn = quickActions.querySelector(".quick-view");
+    var wishBtn = quickActions.querySelector(".add-to-wishlist");
+
+        var wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    if (wishlist.some(item => item.id === product.id)) {
+        wishBtn.classList.add("active");
+    }
+
+    cartBtn.onclick = function(e) {
+        e.preventDefault(); 
+        addToCart(product);
+    };
+
+    viewBtn.onclick = function(e) {
+        e.preventDefault();
+        openQuickView(product);
+    };
+    wishBtn.onclick = function(e) {
+        e.preventDefault();
+        var result = addToWishlist(product);
+        if (result) {
+            this.classList.add("active");
+        } else {
+            this.classList.remove("active");
+        }
+    };
+    
+    imgWrapper.append(image,hoverImg);
         var h4 = document.createElement("h4");
         h4.classList.add("product-title");
         h4.innerText = product.name;
@@ -172,4 +201,148 @@ listmode.addEventListener("click", function() {
 function toggleView(mode) {
     displayMode = mode === 'grid' ? 'grid-view' : 'list-view';
     renderPage();
+}
+
+function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let exists = cart.find(item => item.id === product.id);
+    if(exists) {
+        exists.quantity++;
+    } else {
+        cart.push({...product, quantity: 1});
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+function openQuickView(product) {
+    let modal = document.getElementById("quickview-modal");
+    if(!modal) {
+        modal = document.createElement("dialog");
+        modal.id = "quickview-modal";
+        document.body.appendChild(modal);
+    }
+
+    var sizesHTML = '';
+    if (product.variants && product.variants.length > 0) {
+        sizesHTML = `
+            <div class="modal-sizes">
+                <p>SIZE:</p>
+                <div class="size-options">
+                    ${product.variants.map((variant, index) => `
+                        <input type="radio" name="product-size" id="size-${index}" value="${variant.size}" ${index === 0 ? 'checked' : ''}>
+                        <label for="size-${index}">${variant.size}</label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    function getPriceHTML(variant, issale) {
+    let html = `<span class="modal-price">$${variant.price}.00</span>`;
+    
+    // بنتحقق من وجود خصم ومن وجود سعر قديم في هذا المقاس تحديداً
+    if (issale && variant.oldprice) {
+        let discount = Math.round(((variant.oldprice - variant.price) / variant.oldprice) * 100);
+        html = `
+            <div class="price-container">
+                <span class="modal-price">$${variant.price}.00</span>
+                <span class="old-price" style="text-decoration: line-through; color: #999; margin-left: 10px;">$${variant.oldprice}.00</span>
+                <span class="discount-percent" style="color: #008a00; font-weight: bold; margin-left: 10px;">${discount}% OFF</span>
+            </div>
+        `;
+    }
+    return html;
+}
+    modal.innerHTML = `
+        <div class="modal-wrapper">
+            <button onclick="this.closest('dialog').close()" class="close-btn">&times;</button>
+            <div class="modal-content">
+                <div class="modal-image">
+                    <img src="${product.thumbnail}" alt="${product.name}">
+                </div>
+                <div class="modal-info">
+                <div class="price-wrapper">
+                        ${getPriceHTML(product.variants[0])}
+                    </div>                  
+                      <h2 class="modal-title">${product.name}</h2>
+                    <p class="modal-desc">${product.description}</p>
+                    <a href="./details.html?id=${product.id}" class="view-details">View details</a>
+                    <div class="modal-options">${sizesHTML}</div>
+                    <div class="modal-actions">
+                        <div class="quantity-selector">
+                            <button type="button" class="minus">-</button>
+                            <input type="number" value="1" min="1">
+                            <button type="button" class="plus">+</button>
+                        </div>
+                        <button class="add-to-cart-btn">ADD TO CART</button>
+                    </div>
+                    <div class="modal-footer-links">
+                         <span class="modal-wishlist-action" style="cursor:pointer">
+                            <button class="add-to-wishlist modal-wish-btn" title="Add to Wishlist">
+                                <i class="far fa-heart"></i> ADD TO WISHLIST
+                            </button>
+                         </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    modal.showModal();
+
+   const priceWrapper = modal.querySelector('.price-wrapper');
+const sizeRadios = modal.querySelectorAll('input[name="product-size"]');
+
+sizeRadios.forEach((radio, index) => {
+    radio.addEventListener('change', function() {
+        if (this.checked) {
+            // بنجيب بيانات المقاس اللي اليوزر اختاره بناءً على رقمه (index)
+            const selectedVariant = product.variants[index]; 
+            
+            // بنحدث حاوية السعر بالكامل (سعر جديد + قديم + خصم)
+            priceWrapper.innerHTML = getPriceHTML(selectedVariant, product.issale);
+        }
+    });
+});
+    const qtyInput = modal.querySelector('input[type="number"]');
+    modal.querySelector('.plus').onclick = () => qtyInput.value = parseInt(qtyInput.value) + 1;
+    modal.querySelector('.minus').onclick = () => {
+        if (qtyInput.value > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
+    };
+
+    modal.querySelector('.add-to-cart-btn').onclick = () => {
+        addToCart(product);
+        alert("Added to cart!");
+    };
+
+    const modalWishBtn = modal.querySelector('.modal-wish-btn');
+    
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    if (wishlist.some(item => item.id === product.id)) {
+        modalWishBtn.classList.add("active");
+    }
+
+    modalWishBtn.onclick = function() {
+        let result = addToWishlist(product);
+        if (result) {
+            this.classList.add("active");
+        } else {
+            this.classList.remove("active");
+        }
+        renderPage(); 
+    };
+}
+function addToWishlist(product) {
+    var wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    var existsIndex = wishlist.findIndex(item => item.id === product.id);
+
+    if (existsIndex === -1) {
+        wishlist.push(product);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        return true;
+    } else {
+        wishlist.splice(existsIndex, 1);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        return false;
+    }
+    
 }

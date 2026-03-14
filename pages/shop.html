@@ -17,12 +17,12 @@
             <nav class="main-pages">
                 <ul class="main-pages-ul">
                     <li>
-                        <a class="active" href="./index.html">
+                        <a class="active" href="../index.html">
                             Home
                         </a>
                     </li>
                     <li class="shop-header-nav">
-                        <a href="./shop.html">
+                        <a href="pages/shop.html">
                             Shop<svg style="stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;
@@ -156,7 +156,7 @@
 
 
                     <li>
-                        <a href="./shop.html">
+                        <a href="pages/shop.html">
                             Collections<svg style="stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;
@@ -244,7 +244,7 @@
 
     <div class="toolbar-right">
         <div class="view-icons">
-            <div class="view-icon active" title="Grid View">
+            <div class="view-icon active" id="grid-view" title="Grid View">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="2" y="2" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/>
                     <rect x="16" y="2" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/>
@@ -252,7 +252,7 @@
                     <rect x="16" y="16" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/>
                 </svg>
             </div>
-            <div class="view-icon" title="List View">
+            <div class="view-icon" id="List-View" title="List View">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line x1="2" y1="6" x2="26" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     <line x1="2" y1="14" x2="26" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -267,7 +267,11 @@
 </section>
 <section id="product-container" class="product-grid">
 </section>
+   <section id="pagination-wrapper">
+
+   </section>
     </main>
+        <script src="../js/shop.js"></script>
 </body>
 
 </html>

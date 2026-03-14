@@ -1,0 +1,62 @@
+/* Trendung right now */
+
+.trending-right-now {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 100px;
+   
+}
+.sectionShow{
+     opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.sectionShow.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.trending-right-now .left {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trending-right-now .left h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.trending-right-now .left p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.trending-right-now .right {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.trending-right-now .right .item {
+    width: 16%;
+    text-align: center;
+}
+.trending-right-now .right .item .cer-img {
+   overflow: hidden;
+   border-radius: 50%;
+}
+
+.trending-right-now .right .item .cer-img img{
+   transition: transform 0.7s ease-in-out;
+}
+
+.trending-right-now .right .item .cer-img:hover img{
+   transform: scale(1.1);
+}
+.trending-right-now .right .item p {
+    margin-top: 10px;
+    font-size: 18px;
+}

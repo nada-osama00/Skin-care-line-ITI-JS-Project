@@ -1,0 +1,62 @@
+
+/* quotation */
+
+
+.quotation{
+    display: flex;
+    margin-bottom: 100px;
+    justify-content: center;
+    font-size: 25px;
+    text-align: center;
+}
+.quotation q{
+    width: 65%;
+}
+
+/* sponsors */
+.sponsors{
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+.sponsors .image{
+    width: 150px;
+    height: 80px;
+}
+.sponsors .image img{
+    filter: invert(50%);
+    transition: 0.7s;
+}
+
+.sponsors .image img:hover{
+    filter: invert(0%);
+}
+.trending-now {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:100px;
+}
+
+.trending-now .left {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trending-now .left h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.trending-now .left p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.trending-now .right {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+

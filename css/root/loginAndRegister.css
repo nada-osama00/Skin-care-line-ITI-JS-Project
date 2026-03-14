@@ -1,0 +1,128 @@
+
+
+/* login */
+
+.account-dialog{
+border:none;
+padding:0;
+background:transparent;
+margin: auto;
+/* max-height: 600px; */
+  scrollbar-width: none;
+}
+
+
+.account-dialog::backdrop{
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(3px);
+}
+
+.dialog-container{
+background:#fff;
+width:580px;
+padding:35px;
+border-radius:14px;
+position:relative;
+animation:popup .5s ease;
+}
+
+@keyframes popup{
+from{
+transform:scale(.9);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.close-dialog{
+position:absolute;
+right:15px;
+top:15px;
+cursor:pointer;
+font-size:18px;
+}
+
+.tabs{
+display:flex;
+gap:10px;
+margin-bottom:25px;
+}
+
+.tab{
+width: 50%;
+padding:10px;
+border:none;
+background:#f5f5f5;
+cursor:pointer;
+border-radius:6px;
+transition: .5s;
+
+}
+
+.tab.active{
+background:#000;
+color:#fff;
+
+}
+
+.form{
+display:none;
+flex-direction:column;
+gap:20px;
+transition: .5s;
+
+}
+
+.form.active{
+display:flex;
+}
+
+.input-group{
+position:relative;
+}
+
+.input-group input{
+width:100%;
+padding:12px;
+font-size: 18px;
+border:1px solid #dddddd7b;
+border-radius:6px;
+outline:none;
+}
+
+.input-group label{
+position:absolute;
+left:10px;
+top:50%;
+transform:translateY(-50%);
+background:#fff;
+padding:0 5px;
+color:#777777b4;
+transition:.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label{
+top:-5px;
+}
+
+.main-btn{
+padding:12px;
+background:#000;
+color: #fff;;
+cursor:pointer;
+border-radius:6px;
+}
+
+.switch-text{
+font-size:14px;
+text-align:center;
+}
+
+.switch-text span{
+color:#7E7E7E;
+cursor:pointer;
+}

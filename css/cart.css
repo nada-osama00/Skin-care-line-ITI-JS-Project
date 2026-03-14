@@ -1,0 +1,296 @@
+body {
+    background-color: #FFFFFF;
+}
+
+.main-shoppingCart {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+@font-face {
+    font-family: "GTS";
+    src: url("../css/root/fonts/GTStandard-MRegular.woff2") format("truetype");
+}
+
+@font-face {
+    font-family: "GTS1.2";
+    src: url("../css/root/fonts/GTStandard-MMedium.woff2") format("truetype");
+}
+
+
+.Shopping-header {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900;
+    margin: 20px 0 40px;
+    padding-top: 50px;
+    font-family: "GTS", serif;
+    letter-spacing: 2px;
+
+}
+
+
+.breadcrumb-header {
+    text-align: center;
+    height: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+    margin: auto;
+    background-color: #F5F5F5;
+}
+
+.breadcrumb-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: #777;
+}
+
+.breadcrumb-item.active {
+    font-weight: 600;
+    color: black;
+}
+
+
+.shipping-widget {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.progress-bar {
+    width: 800px;
+    height: 14px;
+    margin-top: 20px;
+    background: #eae9e9;
+    border-radius: 5px;
+    position: relative;
+}
+
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+
+    background: repeating-linear-gradient(45deg,
+            #f7b500,
+            #f7b500 10px,
+            #ffc933 10px,
+            #ffc933 20px);
+
+}
+
+
+.progress-fill.green {
+    background: repeating-linear-gradient(45deg,
+            #2ecc71,
+            #2ecc71 10px,
+            #58d68d 10px,
+            #58d68d 20px);
+}
+
+
+@keyframes stripeMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 40px 0;
+    }
+}
+
+.truck-icon {
+    width: 19px;
+    height: 14px;
+    fill: none;
+    stroke: #f7b500;
+    stroke-width: 25;
+}
+
+.truck {
+    position: absolute;
+    top: -14px;
+    left: 0%;
+    width: 29px;
+    height: 29px;
+    background: white;
+    border: 1px solid #f7b500;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .4s;
+}
+
+
+.free-shipping-box {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.free-shipping-box img {
+    width: 26px;
+}
+
+
+.cart-table {
+    border: 1px solid #e5e5e5;
+    background: white;
+}
+
+.cart-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: #f2f2f2;
+    padding: 22px 30px;
+    letter-spacing: 3px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cart-header span:nth-child(2) {
+    text-align: center;
+}
+
+.cart-header span:nth-child(3) {
+    text-align: right;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    padding: 35px 30px;
+    border-top: 1px solid #eee;
+}
+
+
+.product-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.product-info img {
+    width: 90px;
+}
+
+.product-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    margin-bottom: 6px;
+}
+
+.product-color {
+    font-size: 14px;
+    color: #777;
+}
+
+
+.quantity-box {
+    display: flex;
+    justify-content: center;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    background: #f2f2f2;
+    padding: 12px 18px;
+    gap: 18px;
+}
+
+.quantity-controls button {
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.quantity-controls span {
+    min-width: 20px;
+    text-align: center;
+}
+
+
+.price-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    font-size: 18px;
+}
+
+.remove-item {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    align-items: center;
+}
+
+.continue-shopping {
+    border: 2px solid #e5e1d8;
+    padding: 16px 30px;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 14px;
+    color: black;
+}
+
+.continue-shopping:hover {
+    background: black;
+    color: white;
+}
+
+.clear-cart {
+    border: none;
+    background: none;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+@font-face {
+    font-family: "diff";
+    src: url("../fonts/Different/Heading\ Now.ttf") format("truetype");
+}
+
+.empty-cart-message {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'GTS1.2';
+    padding-bottom: 50px;
+}
+
+.empty-cart-message a {
+    color: black;
+    text-decoration: underline;
+}

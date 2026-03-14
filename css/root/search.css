@@ -1,0 +1,92 @@
+
+
+.search-header-dialog {
+    inset-inline-start: 72%;
+    max-height: 100vh;
+    min-height: 100vh;
+    max-width: 30%;
+    min-width: 30%;
+    border: none;
+    padding: 20px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform .4s ease, opacity .4s ease;
+}
+
+.search-header-dialog.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.search-header-dialog.closing {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.search-header-dialog::backdrop {
+    background-color: #000000a2;
+    backdrop-filter: blur(2px);
+}
+
+.search-header-dialog h3 {
+    font-size: 25px;
+}
+
+.search-header-dialog h4 {
+    font-size: 18px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #0000001a;
+}
+
+.search-header-dialog input {
+    width: 100%;
+    margin-block: 30px;
+    padding: 15px 8px;
+    outline: none;
+    border: none;
+    background: #ababab14;
+}
+
+.search-header-dialog ul {
+    display: flex;
+    color: #ABABAB;
+    margin-bottom: 10px;
+}
+
+.search-header-dialog ul li a {
+    border-bottom: 1px solid #0000001a;
+}
+
+.search-header-dialog .most-searched-products .most-search-product {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.search-header-dialog .most-searched-products .most-search-product .image {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+.search-header-dialog .most-searched-products .most-search-product .image img {
+    width: 80px;
+    height: 80px;
+}
+
+.search-header-dialog .most-searched-products .most-search-product h4 {
+    border: none;
+    font-size: 16px;
+    margin-bottom: 0;
+    padding-block: 10px;
+}
+
+.close-search-dialog {
+    background: transparent;
+    color: #7E7E7E;
+}
+
+.search-close-header {
+    display: flex;
+    justify-content: space-between
+}

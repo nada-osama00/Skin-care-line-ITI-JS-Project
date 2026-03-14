@@ -1,0 +1,93 @@
+/* root and base style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: SatoshiN;
+    src: url('./fonts/Satoshi-Medium.ttf');
+}
+
+@font-face {
+    font-family: GTStN;
+    src: url('./fonts/GTStandard-MMedium.woff2');
+}
+
+body {
+    font-family:  GTStN, SatoshiN, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.img-box {
+    position: relative;
+}
+
+.img-box img {
+    width: 100%;
+    display: block;
+}
+
+.hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.img-box:hover .hover-img {
+    opacity: 1;
+}
+
+.old-price {
+    color: #7E7E7E;
+    text-decoration: line-through;
+}
+
+.price {
+    color: #ababab;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+button {
+    border: none;
+}
+
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    left: 33%;
+    background: #000;
+    color: #fff;
+    ;
+    padding: 15px 20px;
+    border-radius: 6px;
+    display: none;
+    z-index: 99999;
+}
+
+/* -------------- */

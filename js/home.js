@@ -1,0 +1,159 @@
+var homeFilterProductsData;
+var currentProduct = null;
+var quantity = 1;
+
+document.addEventListener("DOMContentLoaded", function () {
+    var heroSlides = document.querySelectorAll(".slide");
+    var heroDots = document.querySelectorAll(".dot");
+    var heroCurrentIndex = 0;
+    var autoSliderInterval;
+
+    function showSlide(index) {
+        heroSlides.forEach(slide => slide.classList.remove("active"));
+        heroDots.forEach(dot => dot.classList.remove("active"));
+
+        heroSlides[index].classList.add("active");
+        heroDots[index].classList.add("active");
+    }
+
+    heroDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            heroCurrentIndex = index;
+            showSlide(heroCurrentIndex);
+        });
+    });
+
+    function startAutoSlider() {
+        autoSliderInterval = setInterval(() => {
+            heroCurrentIndex++;
+            if (heroCurrentIndex >= heroSlides.length) heroCurrentIndex = 0;
+            showSlide(heroCurrentIndex);
+        }, 5000);
+    }
+
+    function stopAutoSlider() {
+        clearInterval(autoSliderInterval);
+    }
+
+    showSlide(heroCurrentIndex);
+    startAutoSlider();
+
+
+    var sectionShow = document.querySelectorAll(".sectionShow");
+
+    var observerSectionShow = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observerSectionShow.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    sectionShow.forEach(section => {
+        observerSectionShow.observe(section);
+    });
+
+    var homeFilterProductsRequest = new XMLHttpRequest();
+    homeFilterProductsRequest.open(
+        "GET",
+        "https://69b40edfe224ec066bddf1d0.mockapi.io/Scincareobjects/products"
+    );
+    homeFilterProductsRequest.responseType = "json";
+    homeFilterProductsRequest.send();
+
+    var homeFilterProductsContainer = document.querySelector(".product-container");
+
+    homeFilterProductsRequest.onload = function () {
+        homeFilterProductsData = homeFilterProductsRequest.response;
+        renderHomeFilterProducts(homeFilterProductsData);
+    };
+
+    function renderHomeFilterProducts(productsList) {
+        homeFilterProductsContainer.innerHTML = "";
+
+        for (var productItem of productsList) {
+            homeFilterProductsContainer.innerHTML += `
+    
+    <div class="product" data-id="${productItem.id}">
+    
+        <div class="img-container">
+        
+            <img class="main-img" src="${productItem.images[0]}">
+            <img class="hover-img" src="${productItem.images[1] ? productItem.images[1] : productItem.images[0]}">
+
+            ${productItem.issale ? `<span class="badge sale">Sale</span>` : ""}
+            ${productItem.isnew ? `<span class="badge new">New</span>` : ""}
+
+            <div class="product-actions">
+
+                 <button class="preview-btn" onclick="previewProduct('${productItem.id}')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" cursorshover="true">
+<path d="M30.685 15.695c-0.043-0.097-1.083-2.404-3.405-4.726-2.153-2.153-5.858-4.72-11.28-4.72s-9.127 2.567-11.28 4.72c-2.322 2.322-3.362 4.629-3.405 4.726-0.041 0.090-0.065 0.194-0.065 0.304s0.024 0.215 0.067 0.309l-0.002-0.005c0.043 0.097 1.083 2.404 3.405 4.725 2.153 2.153 5.858 4.719 11.28 4.719s9.127-2.566 11.28-4.719c2.322-2.322 3.362-4.628 3.405-4.725 0.041-0.090 0.065-0.194 0.065-0.305s-0.024-0.215-0.067-0.309l0.002 0.005zM16 24.249c-3.922 0-7.348-1.427-10.181-4.241-1.16-1.152-2.152-2.472-2.939-3.919l-0.044-0.089c0.83-1.536 1.823-2.856 2.982-4.008l0.001-0.001c2.833-2.815 6.259-4.242 10.181-4.242s7.348 1.427 10.181 4.242c1.16 1.153 2.152 2.472 2.939 3.92l0.044 0.089c-0.796 1.525-4.784 8.249-13.164 8.249zM16 10.25c-3.176 0-5.75 2.574-5.75 5.75s2.574 5.75 5.75 5.75c3.176 0 5.75-2.574 5.75-5.75v0c-0.004-3.174-2.576-5.746-5.75-5.75h-0zM16 20.25c-2.347 0-4.25-1.903-4.25-4.25s1.903-4.25 4.25-4.25c2.347 0 4.25 1.903 4.25 4.25v0c-0.003 2.346-1.904 4.247-4.25 4.25h-0z"></path>
+</svg>
+                </button>
+
+                <button class="wishlist-btn" onclick="addToWishlist('${productItem.id}')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" cursorshover="true">
+	<path d="M23.408 28.748c-0.354-0-0.683-0.104-0.96-0.283l0.007 0.004-6.304-3.994c-0.042-0.028-0.094-0.044-0.15-0.044s-0.108 0.016-0.151 0.045l0.001-0.001-5.859 3.712c-0.3 0.198-0.669 0.316-1.064 0.316-0.439 0-0.844-0.145-1.17-0.39l0.005 0.004c-0.515-0.377-0.846-0.979-0.846-1.658 0-0.184 0.024-0.362 0.070-0.532l-0.003 0.014 1.689-6.645c0.007-0.026 0.012-0.057 0.012-0.088 0-0.104-0.046-0.197-0.119-0.26l-0-0-5.653-4.705c-0.405-0.339-0.661-0.844-0.661-1.41 0-0.207 0.034-0.406 0.097-0.591l-0.004 0.013c0.225-0.695 0.845-1.199 1.588-1.25l0.006-0 7.383-0.479c0.119-0.010 0.217-0.088 0.257-0.195l0.001-0.002 2.754-6.934c0.266-0.675 0.913-1.144 1.669-1.144s1.403 0.469 1.665 1.132l0.004 0.012 2.754 6.934c0.040 0.109 0.139 0.187 0.256 0.197l0.001 0 7.383 0.479c0.749 0.051 1.369 0.555 1.59 1.237l0.004 0.013c0.059 0.173 0.093 0.371 0.093 0.578 0 0.565-0.256 1.071-0.658 1.408l-0.003 0.002-5.654 4.705c-0.073 0.063-0.119 0.156-0.119 0.26 0 0.031 0.004 0.062 0.012 0.091l-0.001-0.002 1.822 7.165c0.038 0.139 0.059 0.298 0.059 0.462 0 0.608-0.296 1.146-0.752 1.479l-0.005 0.004c-0.289 0.213-0.652 0.341-1.045 0.341h-0zM16 22.933c0.001 0 0.001 0 0.002 0 0.353 0 0.681 0.102 0.958 0.279l-0.007-0.004 6.304 3.994c0.042 0.030 0.094 0.047 0.151 0.047 0.062 0 0.12-0.022 0.165-0.058l-0.001 0c0.084-0.060 0.138-0.157 0.138-0.267 0-0.034-0.005-0.066-0.015-0.097l0.001 0.002-1.822-7.165c-0.036-0.137-0.057-0.293-0.057-0.455 0-0.567 0.255-1.074 0.656-1.413l0.003-0.002 5.653-4.705c0.074-0.061 0.121-0.154 0.121-0.257 0-0.041-0.007-0.080-0.021-0.116l0.001 0.002c-0.033-0.12-0.137-0.209-0.264-0.217l-0.001-0-7.383-0.479c-0.707-0.052-1.298-0.504-1.55-1.128l-0.004-0.012-2.754-6.934c-0.040-0.116-0.148-0.198-0.275-0.198s-0.235 0.082-0.275 0.196l-0.001 0.002-2.754 6.934c-0.257 0.636-0.847 1.088-1.548 1.14l-0.006 0-7.383 0.479c-0.127 0.008-0.232 0.097-0.264 0.215l-0 0.002c-0.013 0.034-0.020 0.073-0.020 0.114 0 0.103 0.047 0.195 0.121 0.256l0.001 0 5.653 4.705c0.404 0.342 0.659 0.849 0.659 1.416 0 0.162-0.021 0.318-0.060 0.468l0.003-0.013-1.689 6.645c-0.013 0.045-0.021 0.096-0.021 0.15 0 0.182 0.089 0.342 0.226 0.441l0.002 0.001c0.078 0.060 0.177 0.096 0.285 0.096 0.097 0 0.188-0.030 0.263-0.080l-0.002 0.001 5.859-3.712c0.269-0.173 0.598-0.275 0.95-0.275 0.001 0 0.002 0 0.002 0h-0z"></path>
+</svg>
+                </button>
+
+                <button class="addcart-btn" onclick="addToCart('${productItem.id}')">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+		<path d="M27 5.25h-22c-0.966 0.001-1.749 0.784-1.75 1.75v18c0.001 0.966 0.784 1.749 1.75 1.75h22c0.966-0.001 1.749-0.784 1.75-1.75v-18c-0.001-0.966-0.784-1.749-1.75-1.75h-0zM5 6.75h22c0.138 0 0.25 0.112 0.25 0.25v2.25h-22.5v-2.25c0-0.138 0.112-0.25 0.25-0.25h0zM27 25.25h-22c-0.138-0-0.25-0.112-0.25-0.25v-14.25h22.5v14.25c-0 0.138-0.112 0.25-0.25 0.25h-0zM21.75 14c0 3.176-2.574 5.75-5.75 5.75s-5.75-2.574-5.75-5.75v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0c0 2.347 1.903 4.25 4.25 4.25s4.25-1.903 4.25-4.25v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0z"></path>
+</svg>
+                </button>
+
+            </div>
+
+        </div>
+
+        <p class="price">
+        $${productItem.variants[0].price}
+
+        ${productItem.variants[0].oldprice > productItem.variants[0].price
+                    ? `<span class="old">$${productItem.variants[0].oldprice}</span>`
+                    : ""
+                }
+        </p>
+
+        <a href="../pages/details.html?id=${productItem.id}" class="product-title">
+        ${productItem.name}
+        </a>
+
+    </div>
+    
+    `;
+        }
+
+    }
+
+    var homeFilterButtons = document.querySelectorAll(".filter-btn");
+
+    homeFilterButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            homeFilterButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            var selectedFilterType = this.dataset.filter;
+
+            if (selectedFilterType === "sale") {
+                var homeSaleProducts = homeFilterProductsData.filter(
+                    (product) => product.issale === true
+                );
+                renderHomeFilterProducts(homeSaleProducts);
+            } else if (selectedFilterType === "new") {
+                var homeNewProducts = homeFilterProductsData.filter(
+                    (product) => product.isnew === true
+                );
+                renderHomeFilterProducts(homeNewProducts);
+            } else {
+                renderHomeFilterProducts(homeFilterProductsData);
+            }
+        });
+    });
+
+});
+

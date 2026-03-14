@@ -236,34 +236,36 @@ function openQuickView(product) {
         `;
     }
 
-    function getPriceHTML(variant, issale) {
-    let html = `<span class="modal-price">$${variant.price}.00</span>`;
-    
-    // بنتحقق من وجود خصم ومن وجود سعر قديم في هذا المقاس تحديداً
-    if (issale && variant.oldprice) {
-        let discount = Math.round(((variant.oldprice - variant.price) / variant.oldprice) * 100);
-        html = `
-            <div class="price-container">
-                <span class="modal-price">$${variant.price}.00</span>
-                <span class="old-price" style="text-decoration: line-through; color: #999; margin-left: 10px;">$${variant.oldprice}.00</span>
-                <span class="discount-percent" style="color: #008a00; font-weight: bold; margin-left: 10px;">${discount}% OFF</span>
-            </div>
-        `;
+    function renderPrice(variant) {
+        let html = `<span class="modal-price">$${variant.price}.00</span>`;
+        if (product.issale && variant.oldprice) {
+            let discount = Math.round(((variant.oldprice - variant.price) / variant.oldprice) * 100);
+            html = `
+                <div class="price-container">
+                    <span class="modal-price">$${variant.price}.00</span>
+                    <span class="old-price" style="text-decoration: line-through; color: #999; margin-left: 10px;">$${variant.oldprice}.00</span>
+                    <span class="discount-percent" style="color: #008a00; font-weight: bold; margin-left: 10px;">${discount}% OFF</span>
+                </div>
+            `;
+        }
+        return html;
     }
-    return html;
-}
+
     modal.innerHTML = `
         <div class="modal-wrapper">
             <button onclick="this.closest('dialog').close()" class="close-btn">&times;</button>
             <div class="modal-content">
+            <div class="modal-left">
                 <div class="modal-image">
                     <img src="${product.thumbnail}" alt="${product.name}">
                 </div>
+          </div>
+          <div class="modal-right">
                 <div class="modal-info">
-                <div class="price-wrapper">
-                        ${getPriceHTML(product.variants[0])}
-                    </div>                  
-                      <h2 class="modal-title">${product.name}</h2>
+                    <div class="price-wrapper">
+                        ${renderPrice(product.variants[0])}
+                    </div>
+                    <h2 class="modal-title">${product.name}</h2>
                     <p class="modal-desc">${product.description}</p>
                     <a href="./details.html?id=${product.id}" class="view-details">View details</a>
                     <div class="modal-options">${sizesHTML}</div>
@@ -273,14 +275,8 @@ function openQuickView(product) {
                             <input type="number" value="1" min="1">
                             <button type="button" class="plus">+</button>
                         </div>
-                        <button class="add-to-cart-btn">ADD TO CART</button>
-                    </div>
-                    <div class="modal-footer-links">
-                         <span class="modal-wishlist-action" style="cursor:pointer">
-                            <button class="add-to-wishlist modal-wish-btn" title="Add to Wishlist">
-                                <i class="far fa-heart"></i> ADD TO WISHLIST
-                            </button>
-                         </span>
+                        <button class="add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+                        <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                     </div>
                 </div>
             </div>
@@ -289,35 +285,32 @@ function openQuickView(product) {
 
     modal.showModal();
 
-   const priceWrapper = modal.querySelector('.price-wrapper');
-const sizeRadios = modal.querySelectorAll('input[name="product-size"]');
+    const priceWrapper = modal.querySelector('.price-wrapper');
+    const sizeRadios = modal.querySelectorAll('input[name="product-size"]');
 
-sizeRadios.forEach((radio, index) => {
-    radio.addEventListener('change', function() {
-        if (this.checked) {
-            // بنجيب بيانات المقاس اللي اليوزر اختاره بناءً على رقمه (index)
-            const selectedVariant = product.variants[index]; 
-            
-            // بنحدث حاوية السعر بالكامل (سعر جديد + قديم + خصم)
-            priceWrapper.innerHTML = getPriceHTML(selectedVariant, product.issale);
-        }
+    sizeRadios.forEach((radio, index) => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                const selectedVariant = product.variants[index];
+                priceWrapper.innerHTML = renderPrice(selectedVariant);
+            }
+        });
     });
-});
     const qtyInput = modal.querySelector('input[type="number"]');
     modal.querySelector('.plus').onclick = () => qtyInput.value = parseInt(qtyInput.value) + 1;
     modal.querySelector('.minus').onclick = () => {
         if (qtyInput.value > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
     };
 
-    modal.querySelector('.add-to-cart-btn').onclick = () => {
+    modal.querySelector('.add-to-cart').onclick = () => {
         addToCart(product);
         alert("Added to cart!");
     };
 
-    const modalWishBtn = modal.querySelector('.modal-wish-btn');
+    var modalWishBtn = modal.querySelector('.add-to-wishlist');
     
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    if (wishlist.some(item => item.id === product.id)) {
+    var currentWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    if (currentWishlist.some(item => item.id === product.id)) {
         modalWishBtn.classList.add("active");
     }
 
@@ -328,7 +321,7 @@ sizeRadios.forEach((radio, index) => {
         } else {
             this.classList.remove("active");
         }
-        renderPage(); 
+        renderPage();
     };
 }
 function addToWishlist(product) {

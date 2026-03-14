@@ -1,0 +1,112 @@
+.wish-page {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #FFFFFF;
+    min-height: 90vh;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.wish-nav {
+    background: #eeeeee;
+    text-align: center;
+    padding: 20px;
+}
+
+.wish-nav a {
+    text-decoration: none;
+    color: grey;
+    transition: color 0.3s;
+}
+
+.wish-nav a:hover {
+    color: black;
+}
+
+.wish-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900;
+    margin: 50px 0;
+}
+
+.wish-container {
+    width: 80%;
+    margin: auto;
+    padding-top: 15px;
+}
+
+.wish-message {
+    background: #CFF4FC;
+    color: #087990;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin: 40px auto;
+    border: 1px solid #9EEAF9;
+    border-radius: 3px;
+}
+
+.wish-message a {
+    text-decoration: underline;
+    color: black;
+}
+
+.wish-products {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.wish-card {
+    width: 250px;
+    text-align: center;
+}
+
+.wish-img {
+    position: relative;
+    background: #f6f6f6;
+    padding: 20px;
+}
+
+.wish-img img {
+    width: 100%;
+}
+
+.wish-sale {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #999;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.wish-name {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.wish-price {
+    margin-top: 10px;
+}
+
+.wish-old {
+    text-decoration: line-through;
+    color: gray;
+    margin-right: 8px;
+}
+
+.wish-new {
+    font-weight: bold;
+}
+
+.wish-remove {
+    margin-top: 10px;
+    padding: 10px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

@@ -1,0 +1,104 @@
+
+/* Home offers */
+
+.home-offer {
+    padding-block: 100px;
+    display: flex;
+    justify-content: space-between;
+    height: 707px;
+}
+
+.home-offer .offer-img-main-container {
+    width: 49.5%;
+    padding: 40px;
+    height: 100%;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.home-offer .offer-img-main-container.offer1 {
+    background-image: url('../../media/v5-banner-05.webp');
+}
+
+.home-offer .offer-img-main-container.offer2 {
+    background-image: url('../../media/v5-banner-04.webp');
+}
+
+
+.home-offer .offer-img-main-container .offer-cont {
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    /* align-items: center; */
+}
+
+.home-offer .offer-img-main-container .offer-cont p {
+    font-size: 35px;
+}
+.home-offer .offer-img-main-container .offer-cont h3 {
+    font-size: 65px;
+}
+
+.home-offer .offer-img-main-container .offer-cont a {
+    width: fit-content;
+    margin-block: 20px;
+    border-bottom: 1px solid;
+}
+
+.home-offer .offer-img-main-container .offer-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #ffffff00, #0000006c);
+    z-index: 1;
+}
+
+.offer-img-main-container {
+    width: 23%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-img-main-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: inherit;
+    background-position: center;
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+.offer-img-main-container:hover::after {
+    transform: scale(1.1);
+}
+
+.offer-img-main-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.155) 50%,
+            transparent 100%);
+    transform: skewX(-25deg);
+    transition: left 0.4s ease;
+    z-index: 2;
+}
+
+.offer-img-main-container:hover::before {
+    left: 130%;
+}
+

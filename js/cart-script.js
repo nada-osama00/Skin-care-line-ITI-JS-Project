@@ -25,13 +25,14 @@ function renderCart() {
         emptyMessage.style.display = "block";
         document.querySelector(".Shopping-header").innerText = "";
 
-
         cartHeader.style.display = "none";
         shippingWidget.style.display = "none";
         cartActions.style.display = "none";
 
-        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartTotal();
         updateShipping();
+
+        localStorage.setItem("cart", JSON.stringify(cart));
         return;
     }
 

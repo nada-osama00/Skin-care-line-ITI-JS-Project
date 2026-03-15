@@ -8,17 +8,6 @@ body {
     padding: 0 20px;
 }
 
-@font-face {
-    font-family: "GTS";
-    src: url("../css/root/fonts/GTStandard-MRegular.woff2") format("truetype");
-}
-
-@font-face {
-    font-family: "GTS1.2";
-    src: url("../css/root/fonts/GTStandard-MMedium.woff2") format("truetype");
-}
-
-
 .Shopping-header {
     text-align: center;
     font-size: 40px;
@@ -80,7 +69,6 @@ body {
 
 .progress-fill {
     height: 100%;
-    width: 0%;
     border-radius: 10px;
 
     background: repeating-linear-gradient(45deg,
@@ -99,7 +87,6 @@ body {
 
 .progress-fill.green {
     height: 100%;
-    width: 0%;
     border-radius: 10px;
     background: repeating-linear-gradient(45deg,
             #2ecc71,
@@ -431,12 +418,11 @@ body {
 
 }
 
-.emptyCartIcon {
-
-    font-size: 60px;
-    color: #dcdcdc;
-    margin-bottom: 20px;
-
+.emptyCartIcon{
+    font-size:90px;
+    color:#e5e5e5;
+    margin-bottom:30px;
+    animation:iconFloat 3s ease-in-out infinite;
 }
 
 .empty-cart-message h2 {
@@ -456,13 +442,6 @@ body {
     font-size: 18px;
     color: #777;
     margin-bottom: 35px;
-}
-
-
-.emptyCartIcon {
-    font-size: 90px;
-    color: #e5e5e5;
-    margin-bottom: 30px;
 }
 
 
@@ -550,4 +529,20 @@ body {
     margin-top: 5px;
     margin-bottom: 10px;
     display: none;
+}
+
+@keyframes iconFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
 }

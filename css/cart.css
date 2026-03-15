@@ -209,6 +209,17 @@ body {
 
 }
 
+.cart-item.removing {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+.remove-item.removing {
+    transform: rotate(90deg) scale(.8);
+    color: #e00000;
+    transition: .25s;
+}
+
 @keyframes shakeQty {
 
     0% {

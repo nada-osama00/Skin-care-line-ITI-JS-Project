@@ -4,20 +4,26 @@
 
 .shop-header-container{
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
     z-index: 50;
 }
-
 
 .product-card,
 .wish-card{
     position: relative;
     z-index: 1;
 }
+.shop-header-container{
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition: all .25s ease;
+}
 
+.shop-header-nav:hover .shop-header-container{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
 .wish-page {
     font-family: Arial, Helvetica, sans-serif;
     background: #FFFFFF;
@@ -94,6 +100,7 @@
     position: relative;
     overflow: hidden;
     border: 1px solid #eee;
+    height: 320px;
 }
 
 .wish-img img {
@@ -154,7 +161,7 @@
     font-size: 17px;
 }
 
-.wish-remove {
+.wish-remove{
     margin-top: 15px;
     padding: 10px 20px;
     background: black;
@@ -166,6 +173,21 @@
     transition: all .25s ease;
 }
 
-.wish-remove:hover {
-    background: #222;
+.wish-remove:hover{
+    background:#222;
+    transform: translateY(-2px);
+}
+
+.wish-remove.removing{
+    background:#c0392b;
+    transform: scale(.9);
+}
+
+.wish-remove.removing i{
+    animation: spin .4s linear;
+}
+
+@keyframes spin{
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg); }
 }

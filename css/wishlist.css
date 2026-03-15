@@ -1,3 +1,23 @@
+.shop-header-nav{
+    position: relative;
+}
+
+.shop-header-container{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 50;
+}
+
+
+.product-card,
+.wish-card{
+    position: relative;
+    z-index: 1;
+}
+
 .wish-page {
     font-family: Arial, Helvetica, sans-serif;
     background: #FFFFFF;
@@ -59,28 +79,55 @@
 }
 
 .wish-card {
-    width: 250px;
+    width: 260px;
     text-align: center;
+    background: white;
+    padding-bottom: 15px;
+    transition: all .3s ease;
+}
+
+.wish-card:hover {
+    transform: translateY(-6px);
 }
 
 .wish-img {
     position: relative;
-    background: #f6f6f6;
-    padding: 20px;
+    overflow: hidden;
+    border: 1px solid #eee;
 }
 
 .wish-img img {
     width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.wish-card:hover img {
+    transform: scale(1.06);
 }
 
 .wish-sale {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #999;
+    top: 12px;
+    left: 12px;
+    background: #4B7661;
     color: white;
-    padding: 5px 10px;
-    font-size: 12px;
+    padding: 4px 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    z-index: 9999999;
+}
+
+.wish-new-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #D34B32;
+    color: white;
+    padding: 4px 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    z-index: 9999999;
 }
 
 .wish-name {
@@ -89,24 +136,36 @@
 }
 
 .wish-price {
-    margin-top: 10px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
 }
 
 .wish-old {
     text-decoration: line-through;
-    color: gray;
-    margin-right: 8px;
+    color: #999;
+    font-size: 14px;
 }
 
 .wish-new {
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 17px;
 }
 
 .wish-remove {
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 15px;
+    padding: 10px 20px;
     background: black;
     color: white;
     border: none;
     cursor: pointer;
+    font-size: 13px;
+    letter-spacing: .5px;
+    transition: all .25s ease;
+}
+
+.wish-remove:hover {
+    background: #222;
 }

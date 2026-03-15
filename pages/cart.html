@@ -438,10 +438,19 @@
 
 
         <div id="empty-cart-message" class="empty-cart-message">
-            <h2>
-                Your cart is currently empty.
-                <a href="../pages/shop.html">Back to shopping</a>
-            </h2>
+
+            <i class="fa-solid fa-cart-shopping emptyCartIcon"></i>
+
+            <h2>Your cart is currently empty</h2>
+
+            <p class="emptyCartSubtext">
+                Looks like you haven't added anything yet.
+            </p>
+
+            <a href="../pages/shop.html" class="emptyCartBtn">
+                Continue Shopping
+            </a>
+
         </div>
 
 
@@ -449,22 +458,18 @@
 
             <p id="shippingText"></p>
 
+            <div id="freeShippingBox" class="free-shipping-box">
+                <i class="fa-solid fa-circle-check freeShippingIcon"></i>
+                <span></span>
+            </div>
+
             <div class="progress-bar">
 
                 <div class="progress-fill" id="progressFill"></div>
 
                 <div class="truck" id="truck">
-
                     <i class="fa-solid fa-truck-fast truck-icon"></i>
-
                 </div>
-            </div>
-
-            <div id="freeShippingBox" class="free-shipping-box">
-
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRecswTV6cJiaClLsyTnuAPX9Pf78vKFkZiAg&s">
-
-                <span>You are eligible for free shipping.</span>
 
             </div>
 

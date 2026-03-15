@@ -3,13 +3,19 @@ var message = document.getElementById("wish-message");
 
 var wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-if (wishlist.length === 0) {
+function renderWishlist() {
 
-    message.style.display = "block";
+    container.innerHTML = "";
 
-} else {
+    if (wishlist.length === 0) {
 
-    message.style.display = "none";
+        message.style.display = "block";
+        return;
+
+    } else {
+
+        message.style.display = "none";
+    }
 
     for (var i = 0; i < wishlist.length; i++) {
 
@@ -26,6 +32,8 @@ if (wishlist.length === 0) {
         <div class="wish-img">
 
             ${product.issale ? `<span class="wish-sale">Sale</span>` : ""}
+
+            ${product.isnew ? `<span class="wish-new-badge">New</span>` : ""}
 
             <img src="${product.thumbnail}" alt="${product.name}">
 
@@ -49,22 +57,39 @@ if (wishlist.length === 0) {
 
         container.appendChild(card);
     }
+
+    attachRemoveEvents();
 }
 
-var buttons = document.querySelectorAll(".wish-remove");
+function attachRemoveEvents() {
 
-for (var j = 0; j < buttons.length; j++) {
+    var buttons = document.querySelectorAll(".wish-remove");
 
-    buttons[j].addEventListener("click", function () {
+    for (var j = 0; j < buttons.length; j++) {
 
-        var index = this.dataset.index;
+        buttons[j].addEventListener("click", function () {
 
-        wishlist.splice(index, 1);
+            var index = this.dataset.index;
 
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+            var card = this.closest(".wish-card");
 
-        location.reload();
+            card.style.transition = "all .3s ease";
+            card.style.opacity = "0";
+            card.style.transform = "scale(.9)";
 
-    });
+            setTimeout(function () {
 
+                wishlist.splice(index, 1);
+
+                localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+                renderWishlist();
+
+            }, 300);
+
+        });
+
+    }
 }
+
+renderWishlist();

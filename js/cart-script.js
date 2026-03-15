@@ -23,6 +23,8 @@ function renderCart() {
     if (cart.length === 0) {
 
         emptyMessage.style.display = "block";
+        document.querySelector(".Shopping-header").innerText = "";
+
 
         cartHeader.style.display = "none";
         shippingWidget.style.display = "none";
@@ -32,6 +34,8 @@ function renderCart() {
         updateShipping();
         return;
     }
+
+    document.querySelector(".Shopping-header").innerText = "YOUR SHOPPING CART";
 
     emptyMessage.style.display = "none";
 
@@ -105,30 +109,90 @@ function renderCart() {
 
 
 function increaseQty(i) {
+
+    const items = document.querySelectorAll(".cart-item");
+
+    if (items[i]) {
+
+        items[i].style.transition = "transform .25s ease";
+        items[i].style.transform = "scale(1.02)";
+
+        setTimeout(function () {
+
+            items[i].style.transform = "scale(1)";
+
+        }, 200);
+    }
+
     cart[i].qty++;
-    renderCart();
+
+    setTimeout(function () {
+
+        renderCart();
+
+    }, 200);
 }
 
 function decreaseQty(i) {
 
-    if (cart[i].qty > 1) {
-        cart[i].qty--;
-    }
+    const items = document.querySelectorAll(".cart-item");
 
-    renderCart();
+    if (cart[i].qty > 1) {
+
+        items[i].style.transition = "transform .25s ease";
+        items[i].style.transform = "scale(0.97)";
+
+        setTimeout(function () {
+
+            cart[i].qty--;
+            renderCart();
+
+        }, 200);
+
+    } else {
+
+        /* shake instead of deleting */
+
+        items[i].classList.add("shake");
+
+        setTimeout(function () {
+
+            items[i].classList.remove("shake");
+
+        }, 350);
+
+    }
 }
 
 function removeItem(i) {
 
-    cart.splice(i, 1);
-    renderCart();
+    const items = document.querySelectorAll(".cart-item");
+
+    items[i].classList.add("removing");
+
+    setTimeout(() => {
+
+        cart.splice(i, 1);
+        renderCart();
+
+    }, 350);
 }
 
 
 document.getElementById("clear-cart").onclick = () => {
 
-    cart = [];
-    renderCart();
+    const items = document.querySelectorAll(".cart-item");
+
+    items.forEach(item => {
+        item.classList.add("removing");
+    });
+
+    setTimeout(() => {
+
+        cart = [];
+        renderCart();
+
+    }, 350);
 };
 
 
@@ -163,35 +227,60 @@ function updateCartTotal() {
 function updateShipping() {
 
     const total = getCartTotal();
-
     const goal = freeShippingGoal;
+
+    const progressFill = document.getElementById("progressFill");
+    const truck = document.getElementById("truck");
+    const freeBox = document.getElementById("freeShippingBox");
+
+    if (cart.length === 0) {
+
+        progressFill.style.width = "0%";
+        truck.style.left = "0%";
+
+        freeBox.classList.remove("show");
+
+        document.getElementById("shippingText").innerText = "";
+
+        return;
+    }
 
     const percent = Math.min((total / goal) * 100, 100);
 
-    document.getElementById("progressFill").style.width = percent + "%";
-    document.getElementById("truck").style.left = percent + "%";
+    progressFill.style.width = percent + "%";
+    truck.style.left = percent + "%";
 
     if (total >= goal) {
 
-        document.getElementById("progressFill").classList.add("green");
+        progressFill.classList.add("green");
 
-        document.getElementById("freeShippingBox").style.display = "flex";
+        freeBox.classList.add("show");
 
-        document.getElementById("shippingText").innerText =
+        document.querySelector("#freeShippingBox span").innerText =
             "You unlocked free shipping!";
+
+        document.getElementById("shippingText").innerText = "";
+
+        truck.querySelector("i").style.color = "#2ecc71";
+        truck.style.borderColor = "#2ecc71";
 
     } else {
 
-        document.getElementById("progressFill").classList.remove("green");
+        progressFill.classList.remove("green");
 
-        document.getElementById("freeShippingBox").style.display = "none";
+        freeBox.classList.remove("show");
 
         let remaining = goal - total;
 
         document.getElementById("shippingText").innerText =
             "Spend $" + remaining.toFixed(2) + " more to reach free shipping!";
+
+        truck.querySelector("i").style.color = "#f7b500";
+        truck.style.borderColor = "#f7b500";
     }
 }
+
+
 
 
 /* CHECKOUT BUTTON */

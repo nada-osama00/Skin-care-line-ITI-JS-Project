@@ -21,11 +21,14 @@ header nav {
 header nav .actions-pages-ul,
 header nav .main-pages-ul {
     display: flex;
-    justify-content: space-between;
-}
+   gap: 30px;
 
+}
+header nav .actions-pages-ul{
+   gap: 50px;
+}
 header .actions-pages ul {
-    justify-content: space-evenly;
+    justify-content: flex-end;
 }
 
 header svg {
@@ -102,13 +105,14 @@ header .actions-pages .cart-counter {
     width: 99vw;
     padding: 40px;
     justify-content: space-between;
-    top: 100%;
-    left: -147px;
+    top: 220%;
+    left: -114px;
     height: fit-content;
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
     background-color: #fff;
+    padding-top: 0px;
 
 }
 
@@ -150,13 +154,14 @@ header .actions-pages .cart-counter {
     width: 100vw;
     padding: 40px;
     justify-content: space-between;
-    top: 100%;
-    left: -283px;
+    top: 220%;
+    left: -220px;
     height: fit-content;
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
     background-color: #fff;
+    padding-top: 0px;
 }
 .collection-img-header-container {
     width: 23%;

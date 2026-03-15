@@ -142,3 +142,10 @@
     transition-delay: .2s;
 }
 
+.wishlist-btn i{
+    transition:0.3s;
+}
+
+.wishlist-btn.active i{
+    color:rgb(250, 85, 85);
+}

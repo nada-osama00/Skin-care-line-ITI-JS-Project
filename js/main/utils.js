@@ -19,3 +19,31 @@ function showAlert(message) {
         alertBox.style.display = "none";
     }, 3000);
 }
+
+function refreshCartItemCount() {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalQuantity = 0;
+
+    cartItems.forEach(function(cartItem){
+        totalQuantity += cartItem.quantity;
+    });
+
+    const cartCounterElement = document.querySelector(".cart-counter");
+    if(cartCounterElement){
+        cartCounterElement.textContent = totalQuantity;
+    }
+}
+
+refreshCartItemCount();
+
+
+function refreshWishlistItemCount() {
+    const wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const wishlistCounterElement = document.querySelector(".wishlist-counter");
+
+    if(wishlistCounterElement){
+        wishlistCounterElement.textContent = wishlistItems.length;
+    }
+}
+
+refreshWishlistItemCount();

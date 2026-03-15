@@ -2,12 +2,12 @@ var currentPage = 1;
 const productsPerPage = 12;
 var allProducts = [];
 var displayMode = 'grid-view';
-var xhr=new XMLHttpRequest()
-xhr.open('GET','https://69b40edfe224ec066bddf1d0.mockapi.io/Scincareobjects/products')
-xhr.responseType="json"
+var xhr = new XMLHttpRequest()
+xhr.open('GET', 'https://69b40edfe224ec066bddf1d0.mockapi.io/Scincareobjects/products')
+xhr.responseType = "json"
 xhr.send()
-xhr.onload=function(){
-    allProducts=xhr.response
+xhr.onload = function () {
+    allProducts = xhr.response
     renderPage();
 }
 function renderPage() {
@@ -18,41 +18,40 @@ function renderPage() {
     var end = start + productsPerPage;
     var currentProducts = allProducts.slice(start, end);
     container.className = displayMode === 'grid-view' ? "product-grid" : "product-list";
-    for(var product of currentProducts)
-    {
+    for (var product of currentProducts) {
         var card = createProductCard(product);
         container.append(card);
     }
     setupPagination();
 }
-   
+
 function createProductCard(product) {
-        var a= document.createElement("a")
-        var image=document.createElement("img")
-        var h4=document.createElement("h4")
-         a.classList.add('product-card')
-        a.href = "./details.html?id=" + product.id
+    var a = document.createElement("a")
+    var image = document.createElement("img")
+    var h4 = document.createElement("h4")
+    a.classList.add('product-card')
+    a.href = "./details.html?id=" + product.id
 
-        var imgWrapper = document.createElement("div");
-        imgWrapper.classList.add('product-image-wrapper');
-        image.src=product.thumbnail
+    var imgWrapper = document.createElement("div");
+    imgWrapper.classList.add('product-image-wrapper');
+    image.src = product.thumbnail
 
-        var hoverImg = document.createElement("img");
-       if (product.images && product.images.length > 0) {
-       hoverImg.src = product.images[1]; 
-       } else {
-         hoverImg.src = product.thumbnail;
-        }
-      hoverImg.classList.add("hover-img");
+    var hoverImg = document.createElement("img");
+    if (product.images && product.images.length > 0) {
+        hoverImg.src = product.images[1];
+    } else {
+        hoverImg.src = product.thumbnail;
+    }
+    hoverImg.classList.add("hover-img");
 
-      var desc = document.createElement("p");
-      desc.classList.add("product-description");
-      desc.innerHTML = `<strong>For:</strong> ${product.for}<br>${product.description}`;
+    var desc = document.createElement("p");
+    desc.classList.add("product-description");
+    desc.innerHTML = `<strong>For:</strong> ${product.for}<br>${product.description}`;
 
-     
-      var quickActions = document.createElement("div");
-     quickActions.classList.add("quick-actions");
-     quickActions.innerHTML = `
+
+    var quickActions = document.createElement("div");
+    quickActions.classList.add("quick-actions");
+    quickActions.innerHTML = `
     <button class="add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
     <button class="quick-view" title="Quick View"><i class="far fa-eye"></i></button>
     <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>`;
@@ -61,21 +60,22 @@ function createProductCard(product) {
     var viewBtn = quickActions.querySelector(".quick-view");
     var wishBtn = quickActions.querySelector(".add-to-wishlist");
 
-        var wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    var wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     if (wishlist.some(item => item.id === product.id)) {
         wishBtn.classList.add("active");
     }
 
-    cartBtn.onclick = function(e) {
-        e.preventDefault(); 
+    cartBtn.onclick = function (e) {
+        e.preventDefault();
         addToCart(product);
     };
 
-    viewBtn.onclick = function(e) {
+    viewBtn.onclick = function (e) {
         e.preventDefault();
         openQuickView(product);
     };
-    wishBtn.onclick = function(e) {
+    
+    wishBtn.onclick = function (e) {
         e.preventDefault();
         var result = addToWishlist(product);
         if (result) {
@@ -84,68 +84,68 @@ function createProductCard(product) {
             this.classList.remove("active");
         }
     };
-    
-    imgWrapper.append(image,hoverImg);
-        var h4 = document.createElement("h4");
-        h4.classList.add("product-title");
-        h4.innerText = product.name;
 
-        var priceContainer = document.createElement("div");
-        priceContainer.classList.add("price-container");
-        var price = document.createElement("span");
-        price.classList.add("product-price");
+    imgWrapper.append(image, hoverImg);
+    var h4 = document.createElement("h4");
+    h4.classList.add("product-title");
+    h4.innerText = product.name;
 
-       if (product.variants && product.variants.length > 0) {
+    var priceContainer = document.createElement("div");
+    priceContainer.classList.add("price-container");
+    var price = document.createElement("span");
+    price.classList.add("product-price");
+
+    if (product.variants && product.variants.length > 0) {
         var firstVariant = product.variants[0];
         price.innerText = "$" + firstVariant.price + ".00";
 
-         if (product.issale && firstVariant.oldprice) {
+        if (product.issale && firstVariant.oldprice) {
 
-          var discountPercent = Math.round(((firstVariant.oldprice - firstVariant.price) / firstVariant.oldprice) * 100);
-          
-           var oldPrice = document.createElement("span");
+            var discountPercent = Math.round(((firstVariant.oldprice - firstVariant.price) / firstVariant.oldprice) * 100);
+
+            var oldPrice = document.createElement("span");
             oldPrice.classList.add("old-price");
             oldPrice.innerText = "$" + firstVariant.oldprice + ".00";
-          
+
             var discountBadge = document.createElement("span");
             discountBadge.classList.add("discount-percent");
             discountBadge.innerText = `${discountPercent}% OFF`;
-       
-        var saleBadge = document.createElement("span");
-        saleBadge.classList.add("badge", "sale-badge");
-        saleBadge.innerText = "Sale";
-        imgWrapper.appendChild(saleBadge);
-        priceContainer.append(price,oldPrice, discountBadge);
-    }
-     else {
+
+            var saleBadge = document.createElement("span");
+            saleBadge.classList.add("badge", "sale-badge");
+            saleBadge.innerText = "Sale";
+            imgWrapper.appendChild(saleBadge);
+            priceContainer.append(price, oldPrice, discountBadge);
+        }
+        else {
             priceContainer.append(price);
         }
     } else {
-        price.innerText = ""; 
+        price.innerText = "";
     }
-   
-    
+
+
     if (product.isnew) {
         var newBadge = document.createElement("span");
         newBadge.classList.add("badge", "new-badge");
         newBadge.innerText = "New";
         imgWrapper.appendChild(newBadge);
     }
-       var infoContainer = document.createElement("div");
-       infoContainer.classList.add("product-info");
+    var infoContainer = document.createElement("div");
+    infoContainer.classList.add("product-info");
     if (displayMode === 'grid-view') {
-    imgWrapper.append(quickActions);
-    infoContainer.append(h4, priceContainer); 
+        imgWrapper.append(quickActions);
+        infoContainer.append(h4, priceContainer);
     } else {
-    infoContainer.append(h4, desc, priceContainer, quickActions);
+        infoContainer.append(h4, desc, priceContainer, quickActions);
     }
-       a.append(imgWrapper,infoContainer);    
-       return a;
-    }
+    a.append(imgWrapper, infoContainer);
+    return a;
+}
 
-    function setupPagination() {
+function setupPagination() {
     var wrapper = document.getElementById("pagination-wrapper");
-    if(!wrapper) return;
+    if (!wrapper) return;
     wrapper.innerHTML = "";
     var pageCount = Math.ceil(allProducts.length / productsPerPage);
 
@@ -153,21 +153,21 @@ function createProductCard(product) {
         var btn = document.createElement("button");
         btn.innerText = i;
         btn.className = (i === currentPage) ? "page-btn active" : "page-btn";
-        btn.onclick = function() {
+        btn.onclick = function () {
             currentPage = i;
             renderPage();
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
         wrapper.append(btn);
     }
     if (currentPage < pageCount) {
         var nextBtn = document.createElement("button");
-        nextBtn.innerHTML = '<i class="fa-solid fa-angles-right"></i>'; 
+        nextBtn.innerHTML = '<i class="fa-solid fa-angles-right"></i>';
         nextBtn.className = "page-btn next-btn";
-        nextBtn.onclick = function() {
+        nextBtn.onclick = function () {
             currentPage++;
             renderPage();
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
         wrapper.append(nextBtn);
     }
@@ -183,17 +183,17 @@ document.querySelector(".sort-select").addEventListener("change", function () {
             return priceA - priceB;
         });
     }
-    currentPage = 1; 
+    currentPage = 1;
     renderPage();
 });
-var gridmode=document.getElementById("grid-view")
-gridmode.addEventListener("click", function() {
+var gridmode = document.getElementById("grid-view")
+gridmode.addEventListener("click", function () {
     toggleView('grid');
     this.classList.add("active");
     document.getElementById("List-View").classList.remove("active");
 });
-var listmode=document.getElementById("List-View")
-listmode.addEventListener("click", function() {
+var listmode = document.getElementById("List-View")
+listmode.addEventListener("click", function () {
     toggleView('list');
     this.classList.add("active");
     document.getElementById("grid-view").classList.remove("active");
@@ -206,16 +206,16 @@ function toggleView(mode) {
 function addToCart(product) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let exists = cart.find(item => item.id === product.id);
-    if(exists) {
+    if (exists) {
         exists.quantity++;
     } else {
-        cart.push({...product, quantity: 1});
+        cart.push({ ...product, quantity: 1 });
     }
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 function openQuickView(product) {
     let modal = document.getElementById("quickview-modal");
-    if(!modal) {
+    if (!modal) {
         modal = document.createElement("dialog");
         modal.id = "quickview-modal";
         document.body.appendChild(modal);
@@ -289,7 +289,7 @@ function openQuickView(product) {
     const sizeRadios = modal.querySelectorAll('input[name="product-size"]');
 
     sizeRadios.forEach((radio, index) => {
-        radio.addEventListener('change', function() {
+        radio.addEventListener('change', function () {
             if (this.checked) {
                 const selectedVariant = product.variants[index];
                 priceWrapper.innerHTML = renderPrice(selectedVariant);
@@ -308,13 +308,13 @@ function openQuickView(product) {
     };
 
     var modalWishBtn = modal.querySelector('.add-to-wishlist');
-    
+
     var currentWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     if (currentWishlist.some(item => item.id === product.id)) {
         modalWishBtn.classList.add("active");
     }
 
-    modalWishBtn.onclick = function() {
+    modalWishBtn.onclick = function () {
         let result = addToWishlist(product);
         if (result) {
             this.classList.add("active");
@@ -337,5 +337,5 @@ function addToWishlist(product) {
         localStorage.setItem("wishlist", JSON.stringify(wishlist));
         return false;
     }
-    
+
 }

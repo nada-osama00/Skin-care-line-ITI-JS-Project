@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+
+    <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="stylesheet" href="../Project/Skin-care-line-ITI-JS-Project/css/root.css">
+
+    <link rel="stylesheet" href="../css/root/root.css">
+    <link rel="stylesheet" href="../css/root/header.css">
+    <link rel="stylesheet" href="../css/root/search.css">
+    <link rel="stylesheet" href="../css/root/footer.css">
+    <link rel="stylesheet" href="../css/root/loginAndRegister.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+
+<!-- HEADER -->
+
+<div class="checkoutHeader">
+
+    <a href="index.html" class="logo">
+        Glowing
+    </a>
+
+    <a href="cart.html" class="cartIcon">
+        🛒
+    </a>
+
+</div>
+
+<body>
+    <div class="checkoutContainer">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="checkoutLeft">
+
+            <form id="checkoutForm">
+
+                <h2>Contact</h2>
+
+                <input class="checkoutInput" type="email" placeholder="Email or mobile phone number" required>
+
+                <label class="checkoutCheckbox">
+                    <input type="checkbox"> Email me with news and offers
+                </label>
+
+
+                <h2>Delivery</h2>
+
+                <select class="checkoutInput" required>
+
+                    <option>Select your city</option>
+
+                    <option>Alexandaria</option>
+                    <option>Al-Mansoura</option>
+                    <option>Asyut</option>
+                    <option>Cairo</option>
+                    <option>Fayoum</option>
+                    <option>Gizah</option>
+                    <option>Luxor</option>
+                    <option>Port Said</option>
+                    <option>Qena</option>
+                    <option>Sohag</option>
+                    <option>Suez</option>
+                    <option>Tanta</option>
+                    <option>Zagazig</option>
+
+                </select>
+
+
+                <div class="checkoutTwoCols">
+
+                    <input class="checkoutInput" type="text" placeholder="First name" required>
+
+                    <input class="checkoutInput" type="text" placeholder="Last name" required>
+
+                </div>
+
+
+                <input class="checkoutInput" type="text" placeholder="Address" required>
+
+                <input class="checkoutInput" type="text" placeholder="Apartment, suite, etc. (optional)">
+
+
+                <div class="checkoutTwoCols">
+
+                    <input class="checkoutInput" type="text" placeholder="Area/District" required>
+
+                    <input class="checkoutInput" type="text" placeholder="Postal code" required>
+
+                </div>
+
+
+                <label class="checkoutCheckbox">
+                    <input type="checkbox"> Save this information for next time
+                </label>
+
+
+                <h3>Shipping method</h3>
+
+                <div class="checkoutShippingMethod">
+                    Standard
+                    <span id="checkout-shipping"></span>
+                </div>
+
+
+                <button type="submit" id="confirmOrderBtn" class="confirmOrderBtn">
+                    Confirm Your Order
+                </button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="checkoutRight">
+
+            <div id="checkout-items"></div>
+
+
+            <div class="checkoutSummary">
+
+                <div class="checkoutRow">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal"></span>
+                </div>
+
+                <div class="checkoutRow">
+                    <span>Shipping</span>
+                    <span id="checkout-shipping-summary"></span>
+                </div>
+
+                <div class="checkoutRow">
+                    <span>Estimated taxes</span>
+                    <span id="checkout-tax"></span>
+                </div>
+
+                <hr>
+
+                <div class="checkoutRow checkoutTotal">
+                    <span>Total</span>
+                    <span id="checkout-total"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ORDER CONFIRMATION MODAL -->
+
+    <div id="orderModal" class="orderModal">
+
+        <div class="orderModalContent">
+
+            <h2>Your order has been confirmed!</h2>
+
+            <p>Thank you for shopping with us.</p>
+
+            <button id="continueShoppingBtn">
+                Continue Shopping
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/main/search.js"></script>
+    <script src="../js/main/loginDialog.js"></script>
+    <script src="../js/main/auth.js"></script>
+    <script src="../js/main/utils.js"></script>
+    <script src="../js/checkout.js"></script>
+</body>
+
+</html>

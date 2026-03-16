@@ -188,3 +188,77 @@
     background: none;
     border:none;
 }
+
+/* /////////////////////////////////////////////////////////////////////////// */
+
+.custom-modal {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 10000;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.custom-modal.active { display: flex; }
+
+.modal-content {
+    background: #fff;
+    padding: 20px;         
+    border-radius: 12px;
+    width: 90%;             
+    max-width: 350px;       
+    height: auto;          
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;              
+    animation: slideUp 0.3s ease-out;
+}
+
+.modal-icon { 
+    font-size: 40px; 
+    color: #28a745;
+    margin: 0; 
+    line-height: 1;         
+}
+
+#modal-message {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin: 0;             
+    padding: 5px 0;        
+    line-height: 1.4;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%; 
+    margin-top: 5px;        
+}
+
+.modal-buttons button, 
+.modal-buttons .view-cart-btn {
+    flex: 1; 
+    padding: 10px 5px;      
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;       
+    background: #000;
+    color: #fff;
+}
+
+.modal-buttons button {
+    background: #f4f4f4;
+    color: #333;
+}
+

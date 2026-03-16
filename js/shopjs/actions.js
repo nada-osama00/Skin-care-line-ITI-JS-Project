@@ -22,7 +22,17 @@ function addToCart(product,size, quantity) {
     }
     
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`Added ${finalQuantity} units of ${product.name} (${finalSize}) to cart!`);
+showCartModal(`Added ${finalQuantity} units of ${product.name} (${finalSize}) to cart!`);
+}
+
+function showCartModal(message) {
+    const modal = document.getElementById("cart-modal");
+    document.getElementById("modal-message").innerText = message;
+    modal.classList.add("active");
+}
+
+function closeCartModal() {
+    document.getElementById("cart-modal").classList.remove("active");
 }
 function openQuickView(product) {
     let modal = document.getElementById("quickview-modal");

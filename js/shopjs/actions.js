@@ -1,25 +1,28 @@
 function addToCart(product,size, quantity) {
     const finalSize = size || product.variants[0].size;
-    const finalQuantity = quantity || 1;
+    const finalQuantity = parseInt(quantity) || 1;
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     
-    const cartItemId = `${product.id}-${size}`;
-    
+    const cartItemId = `${product.id}-${finalSize}`;    
     let exists = cart.find(item => item.cartItemId === cartItemId);
 
     if (exists) {
-        exists.quantity += quantity;
+     exists.qty = (parseInt(exists.qty) || 0) + finalQuantity;
     } else {
+        const variant = product.variants.find(v => v.size === finalSize) || product.variants[0];
         cart.push({
-            ...product,
-            cartItemId: cartItemId, 
-            selectedSize: size,
-            quantity: quantity
+           id: product.id,
+          name: product.name,
+         thumbnail: product.thumbnail,
+         cartItemId: cartItemId, 
+         variant: finalSize,
+        price: variant.price, 
+         qty: finalQuantity
         });
     }
     
     localStorage.setItem("cart", JSON.stringify(cart));
-    
+    alert(`Added ${finalQuantity} units of ${product.name} (${finalSize}) to cart!`);
 }
 function openQuickView(product) {
     let modal = document.getElementById("quickview-modal");
@@ -155,3 +158,4 @@ function addToWishlist(product) {
     }
     
 }
+

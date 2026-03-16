@@ -64,12 +64,12 @@ function createProductCard(product) {
 
     cartBtn.onclick = function(e) {
         e.preventDefault(); 
-        if (product.variants && product.variants.length > 0) {
-        const firstVariant = product.variants[0];
-        addToCart(product, firstVariant.size, 1);
-    } else {
-        addToCart(product, "N/A", 1);
-    }
+       const defaultSize = (product.variants && product.variants.length > 0) 
+                        ? product.variants[0].size 
+                        : "Default";
+    
+    addToCart(product, defaultSize, 1);
+
     };
 
     viewBtn.onclick = function(e) {

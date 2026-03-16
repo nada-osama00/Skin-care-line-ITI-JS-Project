@@ -1,0 +1,44 @@
+.breadcrumb-section {
+    padding: 10px 0; 
+    text-align: center;
+}
+.contain1{
+    background-color:#F5F5F5;
+    height: 48px;
+    font-size: 16px;
+}
+
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-top: 15px;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: "—"; 
+    margin-left: 10px;
+    transform: scaleX(1.2);
+    color: #7E7E7E;
+    display: inline-block;
+}
+
+.breadcrumb li a {
+    color: gray;
+    transition: color 0.3s;
+}
+.breadcrumb li{
+    color: black;
+}
+
+.breadcrumb li a:hover {
+    color: #000;
+}
+
+.page-title {
+    font-family: sans-serif;
+    margin-top: 65px;
+    font-size: 30px;
+    font-weight: 900px;
+}

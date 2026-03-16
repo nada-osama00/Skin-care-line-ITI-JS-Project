@@ -81,8 +81,8 @@
     width: 25px; 
     height: 25px;
 }
-.add-to-cart svg:hover{
-     fill: #fff ;
+.quick-actions button:hover svg {
+    fill: #fff; 
 }
 
 .product-description {

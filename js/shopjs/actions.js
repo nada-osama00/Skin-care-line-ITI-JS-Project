@@ -1,12 +1,25 @@
-function addToCart(product) {
+function addToCart(product,size, quantity) {
+    const finalSize = size || product.variants[0].size;
+    const finalQuantity = quantity || 1;
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let exists = cart.find(item => item.id === product.id);
-    if(exists) {
-        exists.quantity++;
+    
+    const cartItemId = `${product.id}-${size}`;
+    
+    let exists = cart.find(item => item.cartItemId === cartItemId);
+
+    if (exists) {
+        exists.quantity += quantity;
     } else {
-        cart.push({...product, quantity: 1});
+        cart.push({
+            ...product,
+            cartItemId: cartItemId, 
+            selectedSize: size,
+            quantity: quantity
+        });
     }
+    
     localStorage.setItem("cart", JSON.stringify(cart));
+    
 }
 function openQuickView(product) {
     let modal = document.getElementById("quickview-modal");
@@ -67,8 +80,9 @@ function openQuickView(product) {
                     <div class="modal-actions">
                         <div class="quantity-selector">
                             <button type="button" class="minus">-</button>
-                            <input type="number" value="1" min="1">
-                            <button type="button" class="plus">+</button>
+                           <input type="number" value="1" min="1" 
+                           onkeydown="if(['e', 'E', '+', '-'].includes(event.key)) event.preventDefault();">
+                           <button type="button" class="plus">+</button>
                         </div>
                         <button class="add-to-cart" title="Add to Cart">Add To Cart</button>
                         <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
@@ -82,6 +96,7 @@ function openQuickView(product) {
 
     const priceWrapper = modal.querySelector('.price-wrapper');
     const sizeRadios = modal.querySelectorAll('input[name="product-size"]');
+   
 
     sizeRadios.forEach((radio, index) => {
         radio.addEventListener('change', function() {
@@ -92,13 +107,20 @@ function openQuickView(product) {
         });
     });
     const qtyInput = modal.querySelector('input[type="number"]');
+     qtyInput.addEventListener('input', function() {
+        if (this.value < 1) this.value = 1;
+    });
     modal.querySelector('.plus').onclick = () => qtyInput.value = parseInt(qtyInput.value) + 1;
     modal.querySelector('.minus').onclick = () => {
         if (qtyInput.value > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
     };
 
     modal.querySelector('.add-to-cart').onclick = () => {
-        addToCart(product);
+       const selectedSize = modal.querySelector('input[name="product-size"]:checked').value;
+        const quantity = parseInt(qtyInput.value);
+        
+        addToCart(product, selectedSize, quantity);
+        modal.close();
     };
 
     var modalWishBtn = modal.querySelector('.add-to-wishlist');

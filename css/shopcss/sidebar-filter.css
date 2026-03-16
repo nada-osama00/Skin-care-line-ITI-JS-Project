@@ -17,6 +17,7 @@
 body.no-scroll{
     overflow: hidden;
 }
+
 .filter-sidebar.active {
     transform: translateX(0);
 }

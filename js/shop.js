@@ -48,11 +48,15 @@ function createProductCard(product) {
     desc.classList.add("product-description");
     desc.innerHTML = `<strong>For:</strong> ${product.for}<br>${product.description}`;
 
-
-    var quickActions = document.createElement("div");
-    quickActions.classList.add("quick-actions");
-    quickActions.innerHTML = `
-    <button class="add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+     
+      var quickActions = document.createElement("div");
+     quickActions.classList.add("quick-actions");
+     quickActions.innerHTML = `
+    <button class="add-to-cart" title="Add to Cart"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <path
+                                    d="M27 5.25h-22c-0.966 0.001-1.749 0.784-1.75 1.75v18c0.001 0.966 0.784 1.749 1.75 1.75h22c0.966-0.001 1.749-0.784 1.75-1.75v-18c-0.001-0.966-0.784-1.749-1.75-1.75h-0zM5 6.75h22c0.138 0 0.25 0.112 0.25 0.25v2.25h-22.5v-2.25c0-0.138 0.112-0.25 0.25-0.25h0zM27 25.25h-22c-0.138-0-0.25-0.112-0.25-0.25v-14.25h22.5v14.25c-0 0.138-0.112 0.25-0.25 0.25h-0zM21.75 14c0 3.176-2.574 5.75-5.75 5.75s-5.75-2.574-5.75-5.75v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0c0 2.347 1.903 4.25 4.25 4.25s4.25-1.903 4.25-4.25v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0z">
+                                </path>
+                            </svg></button>
     <button class="quick-view" title="Quick View"><i class="far fa-eye"></i></button>
     <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>`;
 
@@ -304,7 +308,6 @@ function openQuickView(product) {
 
     modal.querySelector('.add-to-cart').onclick = () => {
         addToCart(product);
-        alert("Added to cart!");
     };
 
     var modalWishBtn = modal.querySelector('.add-to-wishlist');
@@ -339,3 +342,21 @@ function addToWishlist(product) {
     }
 
 }
+// ////////////////////////////////////////////////////
+var openBtn = document.getElementsByClassName("filter-btn")[0];
+var sidebar = document.getElementById("filter-sidebar");
+var overlay = document.getElementById("filter-overlay");
+var closeBtn = document.getElementById("close-sidebar");
+
+
+openBtn.addEventListener("click", function () {
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+    document.body.classList.add("no-scroll");
+});
+
+closeBtn.addEventListener("click", function () {
+    sidebar.classList.remove("active");
+overlay.classList.remove("active");
+document.body.classList.remove("no-scroll");
+});

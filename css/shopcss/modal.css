@@ -1,0 +1,190 @@
+#quickview-modal {
+    width: 800px;
+    max-width: 90%; 
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+#quickview-modal[open] {
+    display: block;
+}
+.quantity-selector 
+{
+    display: flex;
+    border: 1px solid #000; 
+    height: 45px; 
+    align-items: stretch;
+        background-color: gainsboro;
+
+}
+
+.quantity-selector button {
+    background: none;
+    border: none;
+    width: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    
+}
+
+.quantity-selector input {
+    width: 40px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    outline: none; 
+        background-color: gainsboro;
+
+}
+
+#quickview-modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+.modal-content {
+    display: flex; 
+    align-items: stretch;
+    min-height: 500px;
+}
+
+.modal-left {
+    flex: 1.2; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 10px 40px 40px;
+}
+
+.modal-left img {
+    max-width: 85%;
+    height: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.modal-right {
+    flex: 1; 
+    padding: 40px 40px 40px 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-title {
+    font-size: 24px;
+    text-transform: uppercase;
+    margin: 15px 0;
+    letter-spacing: 1px;
+}
+
+.modal-desc {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    
+    max-height: 100px;    
+    overflow-y: auto;     
+    padding-right: 10px;  
+    
+    scrollbar-width: thin;
+    scrollbar-color: #ddd transparent;
+}
+
+.modal-desc::-webkit-scrollbar {
+    width: 4px;
+}
+.modal-desc::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+   margin-top: 30px; 
+}
+
+.quantity-selector {
+    display: flex;
+    border: 1px solid #ddd;
+    align-items: center;
+}
+
+.quantity-selector input {
+    width: 40px;
+    border: none;
+    text-align: center;
+}
+.modal-right .price-container {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: baseline;
+    gap: 10px;
+}
+.modal-price {
+    width: 100%; 
+    font-size: 22px;
+    font-weight: bold;
+    display: block; 
+    margin-bottom: 5px;
+}
+
+.old-price, .discount-percent {
+    font-size: 16px;
+}
+#quickview-modal .add-to-cart {
+    flex: 1;
+   background-color: white;
+    color:black;
+   border: 1px solid #000;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#quickview-modal .add-to-cart:active {
+    transform: scale(0.95); 
+    transition: transform 0.1s ease;
+}
+
+#quickview-modal .add-to-cart:hover {
+     background: #000; 
+    color: #fff;
+    
+}
+.add-to-wishlist {
+    background: none;
+   border: 1px solid #000;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+#quickview-modal .add-to-wishlist:hover {
+    background-color: black;
+}
+#quickview-modal .add-to-wishlist:hover i {
+    color: #fff; 
+}
+.add-to-wishlist.active i {
+    color: red;
+    font-weight: 900;
+}
+.close-btn{
+    position: absolute;
+    top: 15px;      
+    right: 15px;    
+    z-index: 100;
+    cursor: pointer;
+    font-size: 30px;     
+    font-weight: bold;   
+    line-height: 1;
+    background: none;
+    border:none;
+}

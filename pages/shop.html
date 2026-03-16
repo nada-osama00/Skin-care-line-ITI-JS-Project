@@ -5,7 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
-    <link rel="stylesheet" href="../css/shop.css">
+    
+<!-- <link rel="stylesheet" href="/css/shop.css"> -->
+
+
+<link rel="stylesheet" href="/css/shopcss/breadcrumb.css">
+<link rel="stylesheet" href="/css/shopcss/modal.css">
+<link rel="stylesheet" href="/css/shopcss/pagination.css">
+<link rel="stylesheet" href="/css/shopcss/product-card.css">
+<link rel="stylesheet" href="/css/shopcss/sidebar-filter.css">
+<link rel="stylesheet" href="/css/shopcss/toolbar.css">
+
+
      <link rel="stylesheet" href="../css/root/root.css">
     <link rel="stylesheet" href="../css/root/header.css">
     <link rel="stylesheet" href="../css/root/search.css">
@@ -21,12 +32,12 @@
             <nav class="main-pages">
                 <ul class="main-pages-ul uppercase">
                     <li>
-                        <a class="active" href="../index.html">
+                        <a  href="../index.html">
                             Home
                         </a>
                     </li>
                     <li class="shop-header-nav">
-                        <a href="../pages/shop.html">
+                        <a class="active" href="../pages/shop.html">
                             Shop<svg style="stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;
@@ -413,6 +424,64 @@
             </nav>
         </div>
     </header>
+ <aside id="filter-sidebar" class="filter-sidebar" aria-label="Product Filters">
+    <div class="sidebar-header">
+        <h2>Filters</h2>
+        <button id="close-sidebar" class="close-btn">
+            &times;
+        </button>
+    </div>
+
+    <div class="sidebar-content">
+        
+        <section class="filter-group">
+            <h3>Price Range</h3>
+            <div class="price-slider-container">
+          <div class="slider-track"></div>
+         <input type="range" min="0" max="110" value="0" id="slider-1" oninput="slideOne()">
+         <input type="range" min="0" max="110" value="110" id="slider-2" oninput="slideTwo()">
+       </div>
+      <div class="price-values">
+        Price from <span id="range1">0$</span> to <span id="range2">110.00$</span>
+       </div>
+        </section>
+
+        <section class="filter-group">
+            <h3>Category</h3>
+            <div class="options-list">
+                <label><input type="checkbox" name="category" value="skincare"> Skincare</label>
+                <label><input type="checkbox" name="category" value="haircare"> Haircare</label>
+                <label><input type="checkbox" name="category" value="makeup"> Makeup</label>
+            </div>
+        </section>
+
+        <section class="filter-group">
+            <h3>Size</h3>
+            <div class="options-list">
+               <label><input type="checkbox" name="size" value="50"> Small (50ml)</label>
+              <label><input type="checkbox" name="size" value="100"> Medium (100ml)</label>
+              <label><input type="checkbox" name="size" value="200"> Large (200ml)</label>
+            </div>
+        </section>
+
+        <section class="filter-group">
+            <h3>Availability & Offers</h3>
+            <div class="options-list">
+                <label><input type="checkbox" id="instock-filter"> In Stock</label>
+                <label><input type="checkbox" id="isnew-filter"> New Arrivals</label>
+                <label><input type="checkbox" id="issale-filter"> On Sale</label>
+            </div>
+        </section>
+
+        <div class="filter-actions">
+            <button id="apply-filters" class="btn-apply">Apply Filters</button>
+            <button id="clear-filters" class="btn-clear">Clear All</button>
+        </div>
+
+    </div>
+</aside>
+
+<div id="filter-overlay" class="filter-overlay"></div>
     <main>
         <nav class="breadcrumb-section">
     <div class="contain1">
@@ -460,7 +529,11 @@
 
    </section>
     </main>
-        <script src="../js/shop.js"></script>
+    <script src="/js/shopjs/actions.js"></script>
+    <script src="/js/shopjs/products-ui.js"></script>
+    <script src="/js/shopjs/sidebar-ui.js"></script>
+    <script src="/js/shopjs/api.js"></script>
+        <!-- <script src="../js/shop.js"></script> -->
 </body>
 
 </html>

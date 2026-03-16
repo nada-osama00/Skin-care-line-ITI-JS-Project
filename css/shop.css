@@ -459,17 +459,14 @@
     line-height: 1.6;
     margin-bottom: 20px;
     
-    /* الحل السحري هنا */
-    max-height: 100px;    /* حددي أقصى ارتفاع مسموح به للكلام */
-    overflow-y: auto;     /* لو الكلام زاد، هيظهر Scrollbar صغير في الجنب */
-    padding-right: 10px;  /* عشان الـ Scrollbar ميبقاش لازق في الكلام */
+    max-height: 100px;   
+    overflow-y: auto;     
+    padding-right: 10px;  
     
-    /* اختيار اختياري: لو عايزة شكل الـ Scrollbar يبقى رفيع وأشيك */
     scrollbar-width: thin;
     scrollbar-color: #ddd transparent;
 }
 
-/* لتنسيق الـ Scrollbar في متصفح Chrome */
 .modal-desc::-webkit-scrollbar {
     width: 4px;
 }
@@ -636,7 +633,6 @@ body.no-scroll{
     visibility: visible;
 }
 
-/* تنسيق الحاوية */
 .price-slider-container {
     position: relative;
     width: 100%;
@@ -646,7 +642,6 @@ body.no-scroll{
     align-items: center;
 }
 
-/* إلغاء الشكل الافتراضي للمتصفح */
 input[type="range"] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -658,13 +653,12 @@ input[type="range"] {
     top: 0;
     bottom: 0;
     background-color: transparent;
-    pointer-events: none; /* عشان الضغط يمر للـ input اللي تحته */
+    pointer-events: none; 
 }
 
-/* خط الـ Slider */
 .slider-track {
     width: 100%;
-    height: 2px; /* الخط الأسود الرفيع */
+    height: 2px; 
     background-color: #000;
     position: absolute;
     margin: auto;
@@ -673,7 +667,6 @@ input[type="range"] {
     border-radius: 5px;
 }
 
-/* تنسيق الدائرة (المقبض) */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 15px;
@@ -681,12 +674,10 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: #000;
     cursor: pointer;
     border-radius: 50%;
-    pointer-events: auto; /* نرجع التفاعل للدائرة بس */
+    pointer-events: auto; 
     border: 2px solid #fff;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
-
-/* تنسيق الكلام تحت الـ Slider */
 .price-values {
     margin-top: 15px;
     font-size: 14px;

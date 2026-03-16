@@ -92,17 +92,14 @@
     line-height: 1.6;
     margin-bottom: 20px;
     
-    /* الحل السحري هنا */
-    max-height: 100px;    /* حددي أقصى ارتفاع مسموح به للكلام */
-    overflow-y: auto;     /* لو الكلام زاد، هيظهر Scrollbar صغير في الجنب */
-    padding-right: 10px;  /* عشان الـ Scrollbar ميبقاش لازق في الكلام */
+    max-height: 100px;    
+    overflow-y: auto;    
+    padding-right: 10px;  
     
-    /* اختيار اختياري: لو عايزة شكل الـ Scrollbar يبقى رفيع وأشيك */
     scrollbar-width: thin;
     scrollbar-color: #ddd transparent;
 }
 
-/* لتنسيق الـ Scrollbar في متصفح Chrome */
 .modal-desc::-webkit-scrollbar {
     width: 4px;
 }

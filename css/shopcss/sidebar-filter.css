@@ -133,7 +133,10 @@ input[type="range"]::-webkit-slider-thumb {
     border: 2px solid #fff;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
-
+input[type="range"]::-webkit-slider-thumb:active {
+    background-color: #fff;
+    border: 2px solid black;
+}
 .price-values {
     margin-top: 15px;
     font-size: 14px;
@@ -149,4 +152,48 @@ input[type="range"]::-webkit-slider-thumb {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+
+.options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+}
+
+.options-list input[type="checkbox"] {
+    display: none; 
+}
+
+.options-list label {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ddd; 
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    text-align: center;
+}
+
+.options-list input[type="checkbox"]:checked + label {
+    border: 2px solid #000; 
+    font-weight: bold;
+}
+
+.options-list label:hover {
+    border-color: #000;
+}
+.filter-actions button{
+      padding: 10px 20px;
+    border: 1px solid #ddd; 
+    background-color: black;
+    color:  #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    text-align: center;
 }

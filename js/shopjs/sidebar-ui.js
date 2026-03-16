@@ -55,51 +55,44 @@ const sizeRanges = {
 document.getElementById("apply-filters").onclick = function() {
     const minPrice = parseInt(sliderOne.value);
     const maxPrice = parseInt(sliderTwo.value);
-    
-    
     const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
-    
-    const selectedSizes = Array.from(document.querySelectorAll('input[name="size"]:checked'))
-                               .map(cb => cb.value);
+    const selectedSizes = Array.from(document.querySelectorAll('input[name="size"]:checked')).map(cb => cb.value);
     const inStockOnly = document.getElementById("instock-filter").checked;
     const isNewOnly = document.getElementById("isnew-filter").checked;
     const isSaleOnly = document.getElementById("issale-filter").checked;
 
-    filteredProducts = allProducts.filter(product => {
-        const price = product.variants[0].price;
-        const priceMatch = price >= minPrice && price <= maxPrice;
-          //category
+    filteredProducts = allProducts.map(product => {
         const categoryMatch = selectedCategories.length === 0 || 
-                      selectedCategories.some(cat => cat.toLowerCase() === product.category.toLowerCase());
-        //size
-        
-           const sizeMatch = selectedSizes.length === 0 || product.variants.some(v => {
-            const numericSize = parseInt(v.size); 
-            return selectedSizes.some(sizeKey => {
-                const range = sizeRanges[sizeKey];
-                return numericSize >= range.min && numericSize <= range.max;
-            });
-        });
-    
-        // (In Stock)
-        const stockMatch = !inStockOnly || product.variants.some(v => v.stock > 0);
-
-        // new sale
+                             selectedCategories.some(cat => cat.toLowerCase() === product.category.toLowerCase());
         const newMatch = !isNewOnly || product.isnew;
         const saleMatch = !isSaleOnly || product.issale;
 
-        return priceMatch && categoryMatch && stockMatch && newMatch && saleMatch && sizeMatch;
-    });
+        if (!categoryMatch || !newMatch || !saleMatch) return null;
 
+        const matchingVariant = product.variants.find(v => {
+            const p = v.price;
+            const numericSize = parseInt(v.size);
+            
+            const priceMatch = p >= minPrice && p <= maxPrice;
+            const stockMatch = !inStockOnly || v.stock > 0;
+            const sizeMatch = selectedSizes.length === 0 || selectedSizes.some(sizeKey => {
+                const range = sizeRanges[sizeKey];
+                return numericSize >= range.min && numericSize <= range.max;
+            });
+
+            return priceMatch && sizeMatch && stockMatch;
+        });
+
+        return matchingVariant ? { ...product, matchedVariant: matchingVariant } : null;
+
+    }).filter(p => p !== null);
     currentPage = 1;
     renderPage();
     
     document.getElementById("filter-sidebar").classList.remove("active");
     document.getElementById("filter-overlay").classList.remove("active");
-     document.body.classList.remove("no-scroll");
+    document.body.classList.remove("no-scroll");
 };
-
-
 document.getElementById("clear-filters").onclick = function() {
     document.querySelectorAll('.sidebar-content input[type="checkbox"]').forEach(cb => cb.checked = false);
     
@@ -107,8 +100,12 @@ document.getElementById("clear-filters").onclick = function() {
     sliderTwo.value = 110;
     slideOne();
     slideTwo();
+    filteredProducts = allProducts.map(product => {
+        const newProduct = { ...product };
+        delete newProduct.matchedVariant; 
+        return newProduct;
+    });
 
-    filteredProducts = [...allProducts];
     currentPage = 1;
     renderPage();
 };

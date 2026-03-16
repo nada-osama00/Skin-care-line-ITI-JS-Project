@@ -155,6 +155,8 @@ body {
 .free-shipping-box.show {
     opacity: 1;
     transform: translateY(0);
+    display: flex;
+
 }
 
 .freeShippingIcon {
@@ -169,8 +171,7 @@ body {
 }
 
 .cart-header {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    display: flex;
     background: #f2f2f2;
     padding: 22px 30px;
     letter-spacing: 3px;
@@ -178,11 +179,17 @@ body {
     font-weight: 600;
 }
 
+.cart-header span:nth-child(1) {
+    width: 50%;
+}
+
 .cart-header span:nth-child(2) {
+    width: 25%;
     text-align: center;
 }
 
 .cart-header span:nth-child(3) {
+    width: 25%;
     text-align: right;
 }
 
@@ -418,11 +425,11 @@ body {
 
 }
 
-.emptyCartIcon{
-    font-size:90px;
-    color:#e5e5e5;
-    margin-bottom:30px;
-    animation:iconFloat 3s ease-in-out infinite;
+.emptyCartIcon {
+    font-size: 90px;
+    color: #e5e5e5;
+    margin-bottom: 30px;
+    animation: iconFloat 3s ease-in-out infinite;
 }
 
 .empty-cart-message h2 {

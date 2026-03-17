@@ -9,12 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
         sidebar.classList.remove("active");
         overlay.classList.remove("active");
         document.body.classList.remove("no-scroll");
+        document.body.classList.remove("filter-open");
     }
     if(openBtn) {
         openBtn.addEventListener("click", function () {
     sidebar.classList.add("active");
     overlay.classList.add("active");
     document.body.classList.add("no-scroll");
+    document.body.classList.add("filter-open");
 });
     }
 

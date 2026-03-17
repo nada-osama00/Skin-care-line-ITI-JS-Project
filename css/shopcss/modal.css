@@ -27,6 +27,7 @@
 
 }
 
+
 .quantity-selector button {
     background: none;
     border: none;
@@ -111,18 +112,10 @@
     gap: 10px;
    margin-top: 30px; 
 }
-
-.quantity-selector {
-    display: flex;
-    border: 1px solid #ddd;
-    align-items: center;
+.modal-options{
+    margin-top: 20px;
 }
 
-.quantity-selector input {
-    width: 40px;
-    border: none;
-    text-align: center;
-}
 .modal-right .price-container {
     display: flex;
     flex-wrap: wrap; 
@@ -192,73 +185,44 @@
 /* /////////////////////////////////////////////////////////////////////////// */
 
 .custom-modal {
-    display: none; 
-    position: fixed;
+    display: none; position: fixed;
     top: 0; left: 0;
-    width: 100%; 
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); 
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
     z-index: 10000;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center; justify-content: center;
 }
-
 .custom-modal.active { display: flex; }
 
-.modal-content {
+.cart-success-content {
     background: #fff;
-    padding: 20px;         
+    padding: 20px;
     border-radius: 12px;
-    width: 90%;             
-    max-width: 350px;       
-    height: auto;          
-    display: flex;
-    flex-direction: column;
+    width: 90%; max-width: 350px;
+    display: flex; flex-direction: column;
     align-items: center;
-    gap: 10px;              
+    gap: 10px;
     animation: slideUp 0.3s ease-out;
 }
 
-.modal-icon { 
-    font-size: 40px; 
-    color: #28a745;
-    margin: 0; 
-    line-height: 1;         
-}
+.cart-success-icon { font-size: 40px; color: #28a745; }
 
 #modal-message {
-    font-size: 16px;
-    color: #333;
-    text-align: center;
-    margin: 0;             
-    padding: 5px 0;        
-    line-height: 1.4;
+    font-size: 16px; color: #333;
+    text-align: center; margin: 0;
 }
 
-.modal-buttons {
-    display: flex;
-    gap: 10px;
-    width: 100%; 
-    margin-top: 5px;        
-}
+.cart-success-buttons { display: flex; gap: 10px; width: 100%; }
 
-.modal-buttons button, 
-.modal-buttons .view-cart-btn {
-    flex: 1; 
-    padding: 10px 5px;      
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    text-align: center;
+.cart-success-buttons button, 
+.cart-success-buttons .view-cart-btn {
+    flex: 1; padding: 10px;
+    border-radius: 6px; border: none;
+    font-weight: 600; font-size: 13px;
+    text-align: center; cursor: pointer;
     text-decoration: none;
-    font-size: 13px;       
-    background: #000;
-    color: #fff;
 }
 
-.modal-buttons button {
-    background: #f4f4f4;
-    color: #333;
-}
+.cart-success-buttons button { background:  #000; color:#fff;; }
+.view-cart-btn { background: #000; color: #fff; }
 

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+
+    <!-- root styles -->
+    <link rel="stylesheet" href="../css/root/root.css">
+    <link rel="stylesheet" href="../css/root/header.css">
+    <link rel="stylesheet" href="../css/root/footer.css">
+    <link rel="stylesheet" href="../css/root/loginAndRegister.css">
+    <link rel="stylesheet" href="../css/root/search.css">
+
+    <!-- profile style -->
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header>
+        <div class="container">
+            <nav class="main-pages">
+                <ul class="main-pages-ul uppercase">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li class="shop-header-nav">
+                        <a href="./shop.html">
+                            Shop
+                            <svg style="stroke-width:0;stroke:currentColor;fill:currentColor;display:inline-block;height:1em;width:1em;font-size:12px;margin-left:5px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M224 353.9l17-17L401 177l17-17L384 126.1l-17 17-143 143L81 143l-17-17L30.1 160l17 17L207 337l17 17z"></path>
+                            </svg>
+                        </a>
+                        <div class="shop-header-container">
+                            <div class="skincare-header cat-shop-header">
+                                <h3>Skincare</h3>
+                                <ul>
+                                    <li>Cleansers</li>
+                                    <li>Treatments</li>
+                                    <li>Eye care</li>
+                                    <li>Moisturizers</li>
+                                    <li>Accessories</li>
+                                </ul>
+                            </div>
+                            <div class="haircare-header cat-shop-header">
+                                <h3>Haircare</h3>
+                                <ul>
+                                    <li>Shampoo</li>
+                                    <li>Hair Oil</li>
+                                    <li>Hair Spray</li>
+                                    <li>Serums</li>
+                                    <li>Moisturizing</li>
+                                </ul>
+                            </div>
+                            <div class="mackeup-header cat-shop-header">
+                                <h3>Makeup</h3>
+                                <ul>
+                                    <li>Face</li>
+                                    <li>Lip</li>
+                                    <li>Eye</li>
+                                    <li>Cheek</li>
+                                    <li>Accessories</li>
+                                </ul>
+                            </div>
+                            <div class="trend-week-header cat-shop-header">
+                                <h3>Trend This Week</h3>
+                                <ul>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="../media/product-07-1.webp" class="main">
+                                            <img src="../media/product-07-2.webp" class="hover-img">
+                                        </div>
+                                        <p>$37.00</p>
+                                        <p>Shield Spray</p>
+                                    </li>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="../media/product-04-1.webp">
+                                            <img src="../media/product-04-3.webp" class="hover-img">
+                                        </div>
+                                        <p>$39.00</p>
+                                        <p>Shield Shampoo</p>
+                                    </li>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="../media/product-01-1.webp">
+                                            <img src="../media/product-01-2.webp" class="hover-img">
+                                        </div>
+                                        <p>$27.00</p>
+                                        <p>Shield Conditioner</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="collection-header-nav">
+                        <a href="./shop.html">
+                            Collections
+                            <svg style="stroke-width:0;stroke:currentColor;fill:currentColor;display:inline-block;height:1em;width:1em;font-size:12px;margin-left:5px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M224 353.9l17-17L401 177l17-17L384 126.1l-17 17-143 143L81 143l-17-17L30.1 160l17 17L207 337l17 17z"></path>
+                            </svg>
+                        </a>
+                        <div class="collection-header-container">
+                            <div class="collection-img-header-container collection1">
+                                <div class="collection-cont">
+                                    <h3>New Arrival</h3>
+                                    <a href="./shop.html">Shop now</a>
+                                </div>
+                                <div class="collection-overlay"></div>
+                            </div>
+                            <div class="collection-img-header-container collection2">
+                                <div class="collection-cont">
+                                    <h3>On Sale</h3>
+                                    <a href="./shop.html">Shop now</a>
+                                </div>
+                                <div class="collection-overlay"></div>
+                            </div>
+                            <div class="collection-img-header-container collection3">
+                                <div class="collection-cont">
+                                    <h3>Featured</h3>
+                                    <a href="./shop.html">Shop now</a>
+                                </div>
+                                <div class="collection-overlay"></div>
+                            </div>
+                            <div class="collection-img-header-container collection4">
+                                <div class="collection-cont">
+                                    <h3>Best Seller</h3>
+                                    <a href="./shop.html">Shop now</a>
+                                </div>
+                                <div class="collection-overlay"></div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="./contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="logo">
+                <img src="../media/logo.avif" alt="logo">
+            </div>
+
+            <nav class="actions-pages">
+                <ul class="actions-pages-ul">
+                    <li>
+                        <a onclick="openSearchMainScript()">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32">
+                                <path d="M28.529 27.47l-5.566-5.566c1.731-1.97 2.787-4.57 2.787-7.417 0-6.221-5.043-11.264-11.264-11.264s-11.264 5.043-11.264 11.264c0 6.221 5.043 11.264 11.264 11.264 2.846 0 5.446-1.056 7.429-2.797l-0.013 0.011 5.566 5.566c0.136 0.136 0.323 0.22 0.53 0.22 0.414 0 0.75-0.336 0.75-0.75 0-0.207-0.084-0.395-0.22-0.53v0zM4.75 14.5c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75c0 5.385-4.365 9.75-9.75 9.75v0c-5.382-0.006-9.744-4.368-9.75-9.749v-0.001z"></path>
+                            </svg>
+                        </a>
+                        <dialog id="search-dialog" class="search-header-dialog">
+                            <div class="search-close-header">
+                                <h3>Search</h3>
+                                <button class="close-search-dialog" onclick="closeSearchMainScript()">
+                                    <i class="fa-solid fa-x"></i>
+                                </button>
+                            </div>
+                            <input type="text" id="search-input" placeholder="Search our site...">
+                            <h4>Popular searches</h4>
+                            <ul>
+                                <li><a href="./shop.html">Shield</a></li>
+                                <li><a href="./shop.html">Shampoo</a></li>
+                                <li><a href="./shop.html">Accessories</a></li>
+                            </ul>
+                            <h4>Most searched products</h4>
+                            <div class="most-searched-products" id="search-results"></div>
+                        </dialog>
+                    </li>
+
+                    <li>
+                        <a href="#" id="accountBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <path d="M28.776 26.623c-1.94-3.298-5.031-5.742-8.709-6.8l-0.105-0.026c2.864-1.477 4.788-4.415 4.788-7.802 0-4.832-3.918-8.75-8.75-8.75s-8.75 3.918-8.75 8.75c0 3.387 1.924 6.324 4.739 7.779l0.049 0.023c-3.783 1.083-6.874 3.528-8.776 6.756l-0.038 0.069c-0.063 0.108-0.101 0.237-0.101 0.376 0 0.414 0.336 0.75 0.75 0.75 0.276 0 0.517-0.149 0.647-0.371l0.002-0.004c2.335-3.988 6.598-6.624 11.477-6.624s9.143 2.636 11.443 6.562l0.034 0.063c0.132 0.225 0.373 0.374 0.649 0.374 0.414 0 0.75-0.336 0.75-0.75 0-0.138-0.037-0.268-0.103-0.379l0.002 0.004zM8.75 12c0-4.004 3.246-7.25 7.25-7.25s7.25 3.246 7.25 7.25c0 4.004-3.246 7.25-7.25 7.25v0c-4.002-0.005-7.245-3.248-7.25-7.25v-0z"></path>
+                            </svg>
+                        </a>
+                        <dialog id="accountDialog" class="account-dialog">
+                            <div id="customAlert" class="custom-alert">
+                                <span id="alertMessage"></span>
+                            </div>
+                            <div class="dialog-container">
+                                <span class="close-dialog" id="closeDialog">✕</span>
+                                <div class="tabs">
+                                    <button class="tab active" id="login-tab">Login</button>
+                                    <button class="tab" id="register-tab">Register</button>
+                                </div>
+                                <!-- LOGIN -->
+                                <form class="form active" id="loginForm">
+                                    <div class="input-group">
+                                        <input type="email" placeholder=" " id="logEmail" name="logEmail">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" placeholder=" " id="logPass" name="logPass">
+                                        <label>Password</label>
+                                    </div>
+                                    <button class="main-btn">Login</button>
+                                    <p class="switch-text">Don't have an account? <span id="register">Register</span></p>
+                                </form>
+                                <!-- REGISTER -->
+                                <form class="form" id="registerForm">
+                                    <div class="input-group">
+                                        <input type="text" id="regFName" name="regFName" placeholder=" ">
+                                        <label>First Name</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" id="regLName" name="regLName" placeholder=" ">
+                                        <label>Last Name</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="email" id="regEmail" name="regEmail" placeholder=" ">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="tel" id="regTel" placeholder=" " name="regTel">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" id="regAddress" placeholder=" " name="regAddress">
+                                        <label>Address</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" id="regPass" placeholder=" " name="regPass">
+                                        <label>Password</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" id="regConfirmPass" placeholder=" " name="regConfirmPass">
+                                        <label>Confirm Password</label>
+                                    </div>
+                                    <button class="main-btn">Register</button>
+                                    <p class="switch-text">Already have an account? <span id="login">Login</span></p>
+                                </form>
+                            </div>
+                        </dialog>
+                    </li>
+
+                    <li>
+                        <a class="wishlist-header-icon" href="./wishlist.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <path d="M287.9 435.9L150.1 509.1C142.9 513.4 133.1 512.7 125.6 507.4C118.2 502.1 114.5 492.9 115.1 483.9L142.2 328.4L31.11 218.2C24.65 211.9 22.36 202.4 25.2 193.7C28.03 185.1 35.5 178.8 44.49 177.5L197.7 154.8L266.3 13.52C270.4 5.249 278.7 0 287.9 0C297.1 0 305.5 5.25 309.5 13.52L378.1 154.8L531.4 177.5C540.4 178.8 547.8 185.1 550.7 193.7C553.5 202.4 551.2 211.9 544.8 218.2L433.6 328.4L459.9 483.9C461.4 492.9 457.7 502.1 450.2 507.4C442.8 512.7 432.1 513.4 424.9 509.1L287.9 435.9z"></path>
+                            </svg>
+                            <span class="wishlist-counter">0</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="cart-header-icon" href="./cart.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <path d="M27 5.25h-22c-0.966 0.001-1.749 0.784-1.75 1.75v18c0.001 0.966 0.784 1.749 1.75 1.75h22c0.966-0.001 1.749-0.784 1.75-1.75v-18c-0.001-0.966-0.784-1.749-1.75-1.75h-0zM5 6.75h22c0.138 0 0.25 0.112 0.25 0.25v2.25h-22.5v-2.25c0-0.138 0.112-0.25 0.25-0.25h0zM27 25.25h-22c-0.138-0-0.25-0.112-0.25-0.25v-14.25h22.5v14.25c-0 0.138-0.112 0.25-0.25 0.25h-0zM21.75 14c0 3.176-2.574 5.75-5.75 5.75s-5.75-2.574-5.75-5.75v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0c0 2.347 1.903 4.25 4.25 4.25s4.25-1.903 4.25-4.25v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0z"></path>
+                            </svg>
+                            <span class="cart-counter">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ═══ MAIN ═══ -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="profile-hero">
+            <!-- MY ACCOUNT + Welcome back -->
+        </section>
+
+        <!-- Profile Card -->
+        <section class="profile-section">
+            <div class="profile-card" id="profileCard">
+                <!-- Avatar + Info -->
+            </div>
+        </section>
+
+        <!-- Stats Row -->
+        <section class="stats-section">
+            <div class="stats-row" id="statsRow">
+                <!-- Cart / Wishlist / Total -->
+            </div>
+        </section>
+
+        <!-- Recent Cart Items -->
+        <section class="recent-section">
+            <div class="recent-cart" id="recentCart">
+                <!-- Cart Items -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="sectionShow">
+        <div class="top-footer uppercase container">
+            <div class="company">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="./about.html">About Glowing</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Store Locations</a></li>
+                    <li><a href="#">Our Blog</a></li>
+                    <li><a href="#">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="useful">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="#">New Products</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Bundle & Save</a></li>
+                    <li><a href="#">Online Gift Card</a></li>
+                </ul>
+            </div>
+            <div class="information">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#">Start a Return</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping FAQ</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="newsletter">
+                <h3>Sign up to our newsletter</h3>
+                <p>Give your inbox some love with new products, tips, & more.</p>
+                <input type="email" name="emailNews" id="emailNews" placeholder="Enter your email address">
+            </div>
+        </div>
+        <div class="bottom-footer uppercase container">
+            <div class="left">
+                <p>© Glowing 2025 | <a href="#">Powered by Group4</a></p>
+            </div>
+            <div class="center">
+                <img src="../media/logo.avif" alt="logo">
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main/auth.js"></script>
+    <script src="../js/main/loginDialog.js"></script>
+    <script src="../js/main/search.js"></script>
+    <script src="../js/main/utils.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

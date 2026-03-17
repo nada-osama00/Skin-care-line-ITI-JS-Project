@@ -103,9 +103,6 @@ function buildProfileCard() {
     var btns = document.createElement('div');
     btns.classList.add('card-btns');
 
-    var editBtn = document.createElement('button');
-    editBtn.innerText = 'EDIT PROFILE';
-    editBtn.classList.add('btn-edit');
 
     var logoutBtn = document.createElement('button');
     logoutBtn.innerText = 'LOGOUT';
@@ -116,7 +113,7 @@ function buildProfileCard() {
         location.href = '../index.html';
     });
 
-    btns.append(editBtn, logoutBtn);
+    btns.append( logoutBtn);
     rightSide.append(btns);
 
     card.append(leftSide, rightSide);
@@ -249,55 +246,4 @@ function buildRecentCart() {
 //   RUN
 // ══════════════════════════════════════
 displayProfile();
-//edit
-editBtn.addEventListener('click', enableEditMode);
 
-function enableEditMode() {
-    var values = document.querySelectorAll('.info-value');
-
-    values.forEach(function(val) {
-        var text = val.innerText;
-
-        var input = document.createElement('input');
-        input.value = text;
-        input.classList.add('edit-input');
-
-        val.replaceWith(input);
-    });
-
-    // غير زرار Edit لـ Save
-    var editBtn = document.querySelector('.btn-edit');
-    editBtn.innerText = 'SAVE';
-    editBtn.onclick = saveProfile;
-}
-function saveProfile() {
-    var inputs = document.querySelectorAll('.edit-input');
-
-    var updatedUser = {
-        ...user,
-        firstName: inputs[0].value.split(' ')[0] || user.firstName,
-        lastName: inputs[0].value.split(' ')[1] || user.lastName,
-        email: inputs[1].value,
-        phone: inputs[2].value,
-        address: inputs[3].value
-    };
-
-    // تحديث localStorage
-    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-
-    // تحديث MockAPI
-    var xhr = new XMLHttpRequest();
-    xhr.open("PUT", userJson + "/" + user.id, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            showAlert("Profile updated successfully");
-
-            // ريـلود عشان يعرض البيانات الجديدة
-            location.reload();
-        }
-    };
-
-    xhr.send(JSON.stringify(updatedUser));
-}

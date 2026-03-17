@@ -141,6 +141,7 @@
 /* -----(List Mode) ----- */
 #product-container.product-list{
     display: flex;
+    padding-inline: 30px;
         flex-direction: column; 
 }
 
@@ -161,6 +162,7 @@
 #product-container.product-list .product-description {
     display: block; 
     margin-bottom: 20px;
+    width: 60%;
 }
 #product-container.product-list .product-info {
         margin-top: 30px;

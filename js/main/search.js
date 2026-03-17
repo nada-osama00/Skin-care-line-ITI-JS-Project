@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "$" + variantMainScript.price;
 
             htmlMainScript +=
-                "<a href='../../pagesdetails.html?id=" + productMainScript.id + "' class='most-search-product'>" +
+                "<a href='../../pages/details.html?id=" + productMainScript.id + "' class='most-search-product'>" +
                 "<div class='image'>" +
                 "<div class='img-box'>" +
                 "<img src='" + productMainScript.images[0] + "' class='main'>" +

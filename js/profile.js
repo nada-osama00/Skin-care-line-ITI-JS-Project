@@ -218,7 +218,7 @@ function buildRecentCart() {
         row.classList.add('recent-item');
 
         var img = document.createElement('img');
-        img.src = item.img || '';
+        img.src = item.thumbnail || '';
         img.alt = item.name;
         img.classList.add('recent-img');
 

@@ -8,7 +8,7 @@ openDialogAccount.onclick = function (e) {
     e.preventDefault();
 
     if (currentUser) {
-        window.location.href = "../../pages/profile.html";
+        window.location.href = "../pages/profile.html";
 
     } else {
         dialogAccount.showModal();

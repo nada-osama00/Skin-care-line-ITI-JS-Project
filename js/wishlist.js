@@ -39,7 +39,7 @@ function renderWishlist() {
 
         </div>
 
-        <h3 class="wish-name">${product.name}</h3>
+        <a href="../pages/details.html?id=${product.id}" class="wish-name">${product.name}</a>
 
         <p class="wish-price">
 

@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="./css/home/quotation.css">
 
     <!-- modal from shop -->
-    <link rel="stylesheet" href="./css/home/quickviewModal.css">
+    <link rel="stylesheet" href="./css/shopcss/modal.css">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -34,7 +34,7 @@
 
 <body>
 
-      <header>
+    <header>
         <div class="container">
             <nav class="main-pages">
                 <ul class="main-pages-ul uppercase">
@@ -409,7 +409,7 @@
                     </li>
                     <li>
                         <a class="wishlist-header-icon" href="./pages/wishlist.html">
-                           <i class="far fa-heart"></i>
+                            <i class="far fa-heart"></i>
                             <span class="wishlist-counter">0</span>
                         </a>
                     </li>
@@ -666,6 +666,17 @@
             </div>
             <div class="right">
 
+            </div>
+        </section>
+
+        <section id="cart-modal" class="custom-modal">
+            <div class="cart-success-content">
+                <div class="cart-success-icon"><i class="fas fa-check-circle"></i></div>
+                <p id="modal-message"></p>
+                <div class="cart-success-buttons">
+                    <button onclick="closeCartModal()">Continue Shopping</button>
+                    <a href="./pages/cart.html" class="view-cart-btn">View Cart</a>
+                </div>
             </div>
         </section>
     </main>

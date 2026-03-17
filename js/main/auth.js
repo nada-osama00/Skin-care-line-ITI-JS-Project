@@ -39,10 +39,12 @@ registerForm.addEventListener("submit", function (e) {
 
     var regXhr = new XMLHttpRequest();
     regXhr.open("GET", userJson, true);
+    regXhr.responseType = "json";
     regXhr.onload = function () {
 
         if (regXhr.status === 200) {
-            var users = regXhr.responseType = 'json';
+
+            var users = regXhr.response;
 
             var exists = false;
             for (var i = 0; i < users.length; i++) {

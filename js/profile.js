@@ -146,7 +146,7 @@ function buildStats() {
     var stats = [
         { icon: '🛒', value: cart.length,           label: 'CART ITEMS'  },
         { icon: '❤️', value: wishlist.length,        label: 'WISHLIST'    },
-        { icon: '💰', value: '$' + total.toFixed(0), label: 'TOTAL SPENT' }
+        { icon: '💰', value: '$' + total.toFixed(0), label: 'TOTAL IN CART' }
     ];
 
     for(var stat of stats) {

@@ -27,7 +27,7 @@ header nav .main-pages-ul {
 header nav .actions-pages-ul{
    gap: 50px;
 }
-header .actions-pages ul {
+.actions-pages-ul {
     justify-content: flex-end;
 }
 

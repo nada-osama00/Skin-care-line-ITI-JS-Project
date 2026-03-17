@@ -23,33 +23,9 @@
 }
 
 body {
-    background: var(--cream);
     color: var(--dark);
 }
 
-
-/* ══════════════════════════════════════
-   FIX: LOGO
-══════════════════════════════════════ */
-header .logo img {
-    display: block !important;
-    width: 80px !important;
-    height: auto !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-
-/* ══════════════════════════════════════
-   BREADCRUMB
-══════════════════════════════════════ */
-.breadcrumb {
-    padding: 14px 60px;
-    font-size: 13px;
-    color: var(--muted);
-    border-bottom: 1px solid var(--border);
-    background: var(--white);
-}
 
 
 /* ══════════════════════════════════════
@@ -648,4 +624,9 @@ header .logo img {
 
 .copy-msg.show {
     display: block;
+}
+
+.btn-cart.disabled {
+    background: #ccc;
+    cursor: not-allowed;
 }

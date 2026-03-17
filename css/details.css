@@ -13,6 +13,36 @@
 }
 
 
+/* ══════════════════════════════════════
+   RESET
+══════════════════════════════════════ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--dark);
+}
+
+
+/* ══════════════════════════════════════
+   FIX: LOGO
+══════════════════════════════════════ */
+header .logo img {
+    display: block !important;
+    width: 80px !important;
+    height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* ══════════════════════════════════════
+   BREADCRUMB
+══════════════════════════════════════ */
 .breadcrumb {
     padding: 14px 60px;
     font-size: 13px;
@@ -541,4 +571,81 @@
     font-size: 13px;
     color: var(--dark);
     line-height: 1.5;
+}
+
+
+/* ══════════════════════════════════════
+   SHARE POPUP
+══════════════════════════════════════ */
+.share-wrapper {
+    position: relative;
+}
+
+.share-popup {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    width: 280px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.share-popup.show {
+    display: block;
+}
+
+.share-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.share-link-row {
+    display: flex;
+    gap: 8px;
+}
+
+.share-link-row input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--muted);
+    outline: none;
+    background: var(--cream);
+}
+
+.share-link-row button {
+    padding: 8px 14px;
+    background: var(--dark);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+}
+
+.share-link-row button:hover {
+    background: #333;
+}
+
+.copy-msg {
+    display: none;
+    font-size: 11px;
+    color: #148716;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+}
+
+.copy-msg.show {
+    display: block;
 }

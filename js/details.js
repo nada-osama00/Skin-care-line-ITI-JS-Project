@@ -21,32 +21,26 @@ xhr.onload = function() {
 }
 
 
-// ══════════════════════════════════════
-//   displayProduct — الدالة الرئيسية
-// ══════════════════════════════════════
 function displayProduct(prd, allProducts) {
     buildGallery(prd.images);
     buildInfo(prd);
-    buildTabs(prd);
+    buildTabsContent(prd);
     buildRelated(prd, allProducts);
 }
 
-
-// =====================================
+// ======================================
 //   buildGallery
-// =====================================
+// ======================================
 function buildGallery(images) {
 
     var mainImage  = document.getElementById('mainImage');
     var thumbnails = document.getElementById('thumbnails');
 
-    // الصورة الكبيرة
     var mainImg = document.createElement('img');
     mainImg.src = images[0];
     mainImg.id  = 'activeImg';
     mainImage.append(mainImg);
 
-    // الـ Thumbnails
     for(var i of images) {
         var thumb = document.createElement('img');
         thumb.src = i;
@@ -65,16 +59,12 @@ function buildGallery(images) {
         thumbnails.append(thumb);
     }
 
-    // أول thumbnail تكون active
     document.querySelectorAll('.thumb')[0].classList.add('active');
 }
-
-
-// ══════════════════════════════════════
-//   updateStock — تحديث الستوك
-// ══════════════════════════════════════
+// ======================================
+//   updateStock
+// ======================================
 function updateStock(stockEl, stockNum) {
-    // امسح الـ classes القديمة
     stockEl.classList.remove('available', 'low', 'out');
 
     if(stockNum == 0) {
@@ -90,14 +80,14 @@ function updateStock(stockEl, stockNum) {
 }
 
 
-// ══════════════════════════════════════
+// ======================================
 //   buildInfo
-// ══════════════════════════════════════
+// ======================================
 function buildInfo(prd) {
 
     var currentProduct = prd;
-
-    var productInfo = document.getElementById('productInfo');
+    var productInfo    = document.getElementById('productInfo');
+    var staticContent  = document.getElementById('productActions');
 
     // ── Breadcrumb
     if(prd.category && prd.name) {
@@ -105,7 +95,7 @@ function buildInfo(prd) {
         breadcrumb.innerText = 'Home → ' + prd.category + ' → ' + prd.name;
     }
 
-    // ── Badges (issale / isnew)
+    // ── Badges
     if(prd.issale || prd.isnew) {
         var badgesRow = document.createElement('div');
         badgesRow.classList.add('badges-row');
@@ -124,21 +114,21 @@ function buildInfo(prd) {
             badgesRow.append(newBadge);
         }
 
-        productInfo.append(badgesRow);
+        productInfo.insertBefore(badgesRow, staticContent);
     }
 
     // ── Title
     var title = document.createElement('h1');
     title.innerText = prd.name;
     title.classList.add('product-title');
-    productInfo.append(title);
+    productInfo.insertBefore(title, staticContent);
 
-    // ── For (مناسب لمين)
+    // ── For
     if(prd.for) {
         var forEl = document.createElement('p');
         forEl.innerText = 'For: ' + prd.for;
         forEl.classList.add('product-for');
-        productInfo.append(forEl);
+        productInfo.insertBefore(forEl, staticContent);
     }
 
     // ── Vendor
@@ -146,37 +136,36 @@ function buildInfo(prd) {
         var vendorEl = document.createElement('p');
         vendorEl.innerHTML = '<strong>Vendor:</strong> ' + prd.vendor;
         vendorEl.classList.add('vendor-info');
-        productInfo.append(vendorEl);
+        productInfo.insertBefore(vendorEl, staticContent);
     }
 
-    // ── Price Row (من أول variant)
-    var priceRow = document.createElement('div');
+    // ── Price Row
+    var priceRow  = document.createElement('div');
     priceRow.classList.add('price-row');
 
     var price = document.createElement('h3');
-    price.id = 'activePrice';
+    price.id  = 'activePrice';
     price.innerText = '$' + prd.variants[0].price;
     price.classList.add('product-price');
     priceRow.append(price);
 
     var oldPriceEl = document.createElement('span');
-    oldPriceEl.id = 'activeOldPrice';
+    oldPriceEl.id  = 'activeOldPrice';
     oldPriceEl.classList.add('old-price');
     if(prd.variants[0].oldprice && prd.variants[0].oldprice > prd.variants[0].price) {
         oldPriceEl.innerText = '$' + prd.variants[0].oldprice;
     }
     priceRow.append(oldPriceEl);
+    productInfo.insertBefore(priceRow, staticContent);
 
-    productInfo.append(priceRow);
-
-    // ── Stock (من أول variant)
+    // ── Stock
     var stock = document.createElement('p');
-    stock.id = 'activeStock';
+    stock.id  = 'activeStock';
     stock.classList.add('stock');
     updateStock(stock, prd.variants[0].stock);
-    productInfo.append(stock);
+    productInfo.insertBefore(stock, staticContent);
 
-    // ── Variants (Size Buttons)
+    // ── Variants
     if(prd.variants && prd.variants.length > 0) {
 
         var sizeLabel = document.createElement('p');
@@ -187,55 +176,45 @@ function buildInfo(prd) {
         sizesRow.classList.add('sizes-row');
 
         for(var v of prd.variants) {
-
             var sizeBtn = document.createElement('button');
             sizeBtn.innerText = v.size;
             sizeBtn.classList.add('size-btn');
-
-            // حفظ بيانات الـ variant في الـ button
             sizeBtn.dataset.price    = v.price;
             sizeBtn.dataset.oldprice = v.oldprice;
             sizeBtn.dataset.stock    = v.stock;
 
             sizeBtn.addEventListener('click', function() {
-
-                // شيل active من الكل
                 var allSizes = document.querySelectorAll('.size-btn');
                 for(var b of allSizes) {
                     b.classList.remove('active');
                 }
                 this.classList.add('active');
 
-                // حدث السعر
                 document.getElementById('activePrice').innerText = '$' + this.dataset.price;
 
-                // حدث الـ oldprice
-                var oldPriceEl = document.getElementById('activeOldPrice');
+                var oldPEl = document.getElementById('activeOldPrice');
                 if(this.dataset.oldprice && this.dataset.oldprice > this.dataset.price) {
-                    oldPriceEl.innerText = '$' + this.dataset.oldprice;
+                    oldPEl.innerText = '$' + this.dataset.oldprice;
                 } else {
-                    oldPriceEl.innerText = '';
+                    oldPEl.innerText = '';
                 }
 
-                // حدث الستوك
-                var stockEl = document.getElementById('activeStock');
-                updateStock(stockEl, this.dataset.stock);
+                updateStock(document.getElementById('activeStock'), this.dataset.stock);
             });
 
             sizesRow.append(sizeBtn);
         }
 
-        // أول size تكون active تلقائياً
         sizesRow.children[0].classList.add('active');
-
-        productInfo.append(sizeLabel, sizesRow);
+        productInfo.insertBefore(sizeLabel, staticContent);
+        productInfo.insertBefore(sizesRow, staticContent);
     }
 
     // ── Description
     var desc = document.createElement('p');
     desc.innerText = prd.description;
     desc.classList.add('product-desc');
-    productInfo.append(desc);
+    productInfo.insertBefore(desc, staticContent);
 
     // ── Quantity + Add to Cart
     var quantityRow = document.createElement('div');
@@ -256,9 +235,7 @@ function buildInfo(prd) {
     btnPlus.classList.add('qty-btn');
 
     btnMinus.addEventListener('click', function() {
-        if(qtyInput.value > 1) {
-            qtyInput.value--;
-        }
+        if(qtyInput.value > 1) qtyInput.value--;
     });
 
     btnPlus.addEventListener('click', function() {
@@ -270,17 +247,13 @@ function buildInfo(prd) {
     btnCart.classList.add('btn-cart');
 
     btnCart.addEventListener('click', function() {
-
-        // ── جيب الـ size والـ price المختارين
         var activeSize = document.querySelector('.size-btn.active');
         var size  = activeSize ? activeSize.innerText : '';
         var price = activeSize ? parseFloat(activeSize.dataset.price) : parseFloat(currentProduct.variants[0].price);
         var qty   = parseInt(qtyInput.value);
 
-        // ── جيب الـ cart من localStorage
         var cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // ── شوف لو المنتج موجود بنفس الـ id والـ size
         var existing = null;
         for(var i = 0; i < cart.length; i++) {
             if(cart[i].id == currentProduct.id && cart[i].size == size) {
@@ -290,10 +263,8 @@ function buildInfo(prd) {
         }
 
         if(existing !== null) {
-            // لو موجود زود الـ qty
             cart[existing].qty += qty;
         } else {
-            // لو مش موجود ضيفه
             cart.push({
                 id:    currentProduct.id,
                 name:  currentProduct.name,
@@ -304,50 +275,46 @@ function buildInfo(prd) {
             });
         }
 
-        // ── حفظ في localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
-
-        // ── روح لصفحة الـ cart
         location.href = '../pages/cart.html';
     });
 
     quantityRow.append(btnMinus, qtyInput, btnPlus, btnCart);
-    productInfo.append(quantityRow);
+    productInfo.insertBefore(quantityRow, staticContent);
 
     // ── Buy it now
     var btnBuy = document.createElement('button');
     btnBuy.innerText = 'Buy it now';
     btnBuy.classList.add('btn-buy');
-    productInfo.append(btnBuy);
+    productInfo.insertBefore(btnBuy, staticContent);
 
-    // ── Actions
-    var actions = document.createElement('div');
-    actions.classList.add('product-actions');
+    // ── Share Popup
+    var shareBtn   = document.getElementById('shareBtn');
+    var sharePopup = document.getElementById('sharePopup');
+    var copyBtn    = document.getElementById('copyBtn');
+    var shareUrl   = document.getElementById('shareUrl');
+    var copyMsg    = document.getElementById('copyMsg');
 
-    var compare = document.createElement('span');
-    compare.innerText = '⇄ Compare';
-    compare.classList.add('action-btn');
+    shareUrl.value = window.location.href;
 
-    var wishlist = document.createElement('span');
-    wishlist.innerText = '☆ Add To Wishlist';
-    wishlist.classList.add('action-btn');
+    shareBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        sharePopup.classList.toggle('show');
+    });
 
-    var share = document.createElement('span');
-    share.innerText = '⌥ Share';
-    share.classList.add('action-btn');
+    copyBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(shareUrl.value);
+        copyMsg.classList.add('show');
+        setTimeout(function() { copyMsg.classList.remove('show'); }, 2000);
+    });
 
-    actions.append(compare, wishlist, share);
-    productInfo.append(actions);
+    document.addEventListener('click', function(e) {
+        if(!e.target.closest('.share-wrapper')) {
+            sharePopup.classList.remove('show');
+        }
+    });
 
-    // ── Divider
-    var divider = document.createElement('div');
-    divider.classList.add('divider');
-    productInfo.append(divider);
-
-    // ── Delivery
-    var delivery = document.createElement('div');
-    delivery.classList.add('delivery-info');
-
+    // ── Delivery Date
     var today     = new Date();
     var startDate = new Date();
     var endDate   = new Date();
@@ -359,44 +326,19 @@ function buildInfo(prd) {
     var start   = startDate.toLocaleDateString('en-US', options);
     var end     = endDate.toLocaleDateString('en-US', options);
 
-    var deliveryRow1 = document.createElement('p');
-    deliveryRow1.innerHTML = '🚚 <strong>Estimated Delivery:</strong> <span>' + start + ' - ' + end + '</span>';
-    deliveryRow1.classList.add('delivery-row');
-
-    var deliveryRow2 = document.createElement('p');
-    deliveryRow2.innerHTML = '📦 <strong>Free Shipping & Returns:</strong> <span>On all orders over $75</span>';
-    deliveryRow2.classList.add('delivery-row');
-
-    delivery.append(deliveryRow1, deliveryRow2);
-    productInfo.append(delivery);
+    document.querySelector('#deliveryDate span').innerText = start + ' - ' + end;
 }
+// ======================================
+//   buildTabsContent
+// ======================================
+function buildTabsContent(prd) {
 
+    var tabDesc     = document.getElementById('tabDesc');
+    var tabShip     = document.getElementById('tabShip');
+    var contentDesc = document.getElementById('contentDesc');
+    var contentShip = document.getElementById('contentShip');
 
-// ══════════════════════════════════════
-//   buildTabs
-// ══════════════════════════════════════
-function buildTabs(prd) {
-
-    var section = document.querySelector('.description-section');
-
-    // ── Tab Buttons
-    var tabRow = document.createElement('div');
-    tabRow.classList.add('tab-row');
-
-    var tabDesc = document.createElement('span');
-    tabDesc.innerText = 'Description';
-    tabDesc.classList.add('desc-tab', 'active');
-
-    var tabShip = document.createElement('span');
-    tabShip.innerText = 'Shipping & Return';
-    tabShip.classList.add('desc-tab');
-
-    tabRow.append(tabDesc, tabShip);
-
-    // ── محتوى Description
-    var contentDesc = document.createElement('div');
-    contentDesc.classList.add('tab-content', 'active');
-
+    // ── محتوى Description من الـ API
     var descText = document.createElement('p');
     descText.innerText = prd.description;
     descText.classList.add('tab-text');
@@ -422,20 +364,10 @@ function buildTabs(prd) {
         contentDesc.append(descText);
     }
 
-    // ── محتوى Shipping & Return
-    var contentShip = document.createElement('div');
-    contentShip.classList.add('tab-content');
-
-    var shipText = document.createElement('p');
-    shipText.innerText = 'We typically process and ship orders within 1 week. Free shipping is available for orders over $75. Standard shipping usually takes 5-7 business days. For returns, we accept items within 1 week, provided they are unused and in their original packaging. Refunds are processed within 3-5 business days.';
-    shipText.classList.add('tab-text');
-
-    contentShip.append(shipText);
-
     // ── منطق التبديل
     tabDesc.addEventListener('click', function() {
-        tabDesc.classList.add('active'); 
-        tabShip.classList.remove('active'); 
+        tabDesc.classList.add('active');
+        tabShip.classList.remove('active');
         contentDesc.classList.add('active');
         contentShip.classList.remove('active');
     });
@@ -446,25 +378,15 @@ function buildTabs(prd) {
         contentShip.classList.add('active');
         contentDesc.classList.remove('active');
     });
-
-    section.append(tabRow, contentDesc, contentShip);
 }
-
-
-// ══════════════════════════════════════
-//   buildRelated — You May Also Like
-// ══════════════════════════════════════
+// ======================================
+//   buildRelated
+// ======================================
 function buildRelated(prd, allProducts) {
 
-    var section = document.querySelector('.related-products');
+    var section = document.getElementById('relatedGrid');
 
-    // ── العنوان
-    var title = document.createElement('h2');
-    title.innerText = 'You May Also Like';
-    title.classList.add('related-title');
-    section.append(title);
-
-    // ── فلتر المنتجات بنفس الـ category وشيل المنتج الحالي
+    // ── فلتر بنفس الـ category
     var related = [];
     for(var p of allProducts) {
         if(p.category == prd.category && p.id != prd.id) {
@@ -472,30 +394,23 @@ function buildRelated(prd, allProducts) {
         }
     }
 
-    // لو مفيش في نفس الـ category خد أي منتجات تانية
+    // لو مفيش → خد أي منتجات
     if(related.length == 0) {
         for(var p of allProducts) {
-            if(p.id != prd.id) {
-                related.push(p);
-            }
+            if(p.id != prd.id) related.push(p);
         }
     }
 
-    // خد أول 4 بس
+    // أول 4 بس
     related = related.slice(0, 4);
-
-    // ── الـ Grid
-    var grid = document.createElement('div');
-    grid.classList.add('related-grid');
 
     for(var p of related) {
 
-        // الـ Card كلها link
         var card = document.createElement('a');
         card.href = './details.html?id=' + p.id;
         card.classList.add('related-card');
 
-        // ── الصورة + badges
+        // ── صورة + badge
         var imgWrap = document.createElement('div');
         imgWrap.classList.add('related-img-wrap');
 
@@ -504,7 +419,6 @@ function buildRelated(prd, allProducts) {
         img.alt = p.name;
         imgWrap.append(img);
 
-        // badge لو issale أو isnew
         if(p.issale || p.isnew) {
             var badge = document.createElement('span');
             badge.classList.add('related-badge');
@@ -540,8 +454,6 @@ function buildRelated(prd, allProducts) {
         nameEl.classList.add('related-name');
 
         card.append(imgWrap, priceWrap, nameEl);
-        grid.append(card);
+        section.append(card);
     }
-
-    section.append(grid);
 }

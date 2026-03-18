@@ -135,3 +135,18 @@ continueBtn.addEventListener("click", function () {
     window.location.href = "../index.html";
 
 });
+
+/* DELIVERY ESTIMATE (5–9 days) */
+var today = new Date();
+var startDate = new Date();
+var endDate = new Date();
+
+startDate.setDate(today.getDate() + 5);
+endDate.setDate(today.getDate() + 9);
+
+var options = { month: 'long', day: 'numeric' };
+var start = startDate.toLocaleDateString('en-US', options);
+var end = endDate.toLocaleDateString('en-US', options);
+
+document.getElementById("checkout-delivery").innerText =
+    start + ' - ' + end;

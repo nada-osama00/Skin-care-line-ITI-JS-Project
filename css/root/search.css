@@ -52,6 +52,7 @@
     display: flex;
     color: #ABABAB;
     margin-bottom: 10px;
+    justify-content: space-around;
 }
 
 .search-header-dialog ul li a {

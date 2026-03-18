@@ -178,9 +178,9 @@ function createProductCard(product) {
 document.querySelector(".sort-select").addEventListener("change", function () {
     const sortValue = this.value;
     if (sortValue === "Alphabetically, A-Z") {
-        allProducts.sort((a, b) => a.name.localeCompare(b.name));
+        filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortValue === "Price, Low to High") {
-        allProducts.sort((a, b) => {
+        filteredProducts.sort((a, b) => {
             let priceA = a.variants[0] ? a.variants[0].price : 0;
             let priceB = b.variants[0] ? b.variants[0].price : 0;
             return priceA - priceB;

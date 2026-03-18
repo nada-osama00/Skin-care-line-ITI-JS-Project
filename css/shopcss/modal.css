@@ -1,29 +1,29 @@
 #quickview-modal {
     width: 800px;
-    max-width: 90%; 
-    
+    max-width: 90%;
+
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
     border: none;
     border-radius: 12px;
     padding: 0;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 #quickview-modal[open] {
     display: block;
 }
-.quantity-selector 
-{
+
+.quantity-selector {
     display: flex;
-    border: 1px solid #000; 
-    height: 45px; 
+    border: 1px solid #000;
+    height: 45px;
     align-items: stretch;
-        background-color: gainsboro;
+    background-color: gainsboro;
 
 }
 
@@ -34,7 +34,7 @@
     width: 30px;
     cursor: pointer;
     font-size: 18px;
-    
+
 }
 
 .quantity-selector input {
@@ -42,22 +42,23 @@
     border: none;
     text-align: center;
     font-weight: bold;
-    outline: none; 
-        background-color: gainsboro;
+    outline: none;
+    background-color: gainsboro;
 
 }
 
 #quickview-modal::backdrop {
     background: rgba(0, 0, 0, 0.6);
 }
+
 .modal-content {
-    display: flex; 
+    display: flex;
     align-items: stretch;
     min-height: 500px;
 }
 
 .modal-left {
-    flex: 1.2; 
+    flex: 1.2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,7 +73,7 @@
 }
 
 .modal-right {
-    flex: 1; 
+    flex: 1;
     padding: 40px 40px 40px 10px;
     background: #fff;
     display: flex;
@@ -90,11 +91,11 @@
     color: #666;
     line-height: 1.6;
     margin-bottom: 20px;
-    
-    max-height: 100px;    
-    overflow-y: auto;     
-    padding-right: 10px;  
-    
+
+    max-height: 100px;
+    overflow-y: auto;
+    padding-right: 10px;
+
     scrollbar-width: thin;
     scrollbar-color: #ddd transparent;
 }
@@ -102,6 +103,7 @@
 .modal-desc::-webkit-scrollbar {
     width: 4px;
 }
+
 .modal-desc::-webkit-scrollbar-thumb {
     background-color: #ddd;
     border-radius: 10px;
@@ -110,119 +112,167 @@
 .modal-actions {
     display: flex;
     gap: 10px;
-   margin-top: 30px; 
+    margin-top: 30px;
 }
-.modal-options{
+
+.modal-options {
     margin-top: 20px;
 }
 
 .modal-right .price-container {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     align-items: baseline;
     gap: 10px;
 }
+
 .modal-price {
-    width: 100%; 
+    width: 100%;
     font-size: 22px;
     font-weight: bold;
-    display: block; 
+    display: block;
     margin-bottom: 5px;
 }
 
-.old-price, .discount-percent {
+.old-price,
+.discount-percent {
     font-size: 16px;
 }
+
 #quickview-modal .add-to-cart {
     flex: 1;
-   background-color: white;
-    color:black;
-   border: 1px solid #000;
+    background-color: white;
+    color: black;
+    border: 1px solid #000;
     padding: 12px;
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
 }
+
 #quickview-modal .add-to-cart:active {
-    transform: scale(0.95); 
+    transform: scale(0.95);
     transition: transform 0.1s ease;
 }
 
 #quickview-modal .add-to-cart:hover {
-     background: #000; 
+    background: #000;
     color: #fff;
-    
+
 }
+
 .add-to-wishlist {
     background: none;
-   border: 1px solid #000;
+    border: 1px solid #000;
     padding: 10px 15px;
     cursor: pointer;
 }
+
 #quickview-modal .add-to-wishlist:hover {
     background-color: black;
 }
+
 #quickview-modal .add-to-wishlist:hover i {
-    color: #fff; 
+    color: #fff;
 }
+
 .add-to-wishlist.active i {
     color: red;
     font-weight: 900;
 }
-.close-btn{
+
+.close-btn {
     position: absolute;
-    top: 15px;      
-    right: 15px;    
+    top: 15px;
+    right: 15px;
     z-index: 100;
     cursor: pointer;
-    font-size: 30px;     
-    font-weight: bold;   
+    font-size: 30px;
+    font-weight: bold;
     line-height: 1;
     background: none;
-    border:none;
+    border: none;
 }
 
 /* /////////////////////////////////////////////////////////////////////////// */
 
 .custom-modal {
-    display: none; position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 10000;
-    align-items: center; justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
-.custom-modal.active { display: flex; }
+
+.custom-modal.active {
+    display: flex;
+}
 
 .cart-success-content {
     background: #fff;
     padding: 20px;
     border-radius: 12px;
-    width: 90%; max-width: 350px;
-    display: flex; flex-direction: column;
+    width: 90%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
     animation: slideUp 0.3s ease-out;
 }
 
-.cart-success-icon { font-size: 40px; color: #28a745; }
-
-#modal-message {
-    font-size: 16px; color: #333;
-    text-align: center; margin: 0;
+.cart-success-icon {
+    font-size: 40px;
+    color: #28a745;
 }
 
-.cart-success-buttons { display: flex; gap: 10px; width: 100%; }
+#modal-message {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin: 0;
+}
 
-.cart-success-buttons button, 
+.cart-success-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.cart-success-buttons button,
 .cart-success-buttons .view-cart-btn {
-    flex: 1; padding: 10px;
-    border-radius: 6px; border: none;
-    font-weight: 600; font-size: 13px;
-    text-align: center; cursor: pointer;
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
     text-decoration: none;
 }
 
-.cart-success-buttons button { background:  #000; color:#fff;; }
-.view-cart-btn { background: #000; color: #fff; }
+.cart-success-buttons button {
+    background: #000;
+    color: #fff;
+    ;
+}
 
+.view-cart-btn {
+    background: #000;
+    color: #fff;
+}
+
+.add-to-cart {
+    transition: 0.3s;
+}
+
+.add-to-cart.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

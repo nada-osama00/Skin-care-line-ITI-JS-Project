@@ -40,7 +40,7 @@ function renderCart() {
 
     emptyMessage.style.display = "none";
 
-    cartHeader.style.display = "block";
+    cartHeader.style.display = "flex";
     shippingWidget.style.display = "block";
     cartActions.style.display = "flex";
 

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var openBtn = document.querySelector(".filter-btn");
     var sidebar = document.getElementById("filter-sidebar");
     var overlay = document.getElementById("filter-overlay");
@@ -11,21 +11,21 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.classList.remove("no-scroll");
         document.body.classList.remove("filter-open");
     }
-    if(openBtn) {
+    if (openBtn) {
         openBtn.addEventListener("click", function () {
-    sidebar.classList.add("active");
-    overlay.classList.add("active");
-    document.body.classList.add("no-scroll");
-    document.body.classList.add("filter-open");
-});
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+            document.body.classList.add("no-scroll");
+            document.body.classList.add("filter-open");
+        });
     }
 
-    if(closeBtn) {
-closeBtn.addEventListener("click", closeFilter);  
-}
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeFilter);
+    }
 
-if(overlay) {
-   overlay.addEventListener("click", closeFilter);
+    if (overlay) {
+        overlay.addEventListener("click", closeFilter);
     }
 });
 
@@ -50,11 +50,11 @@ function slideTwo() {
 }
 
 const sizeRanges = {
-    "50":  { min: 0,   max: 69 },   //small
-    "100": { min: 70,  max: 150 },  //madium
+    "50": { min: 0, max: 69 },   //small
+    "100": { min: 70, max: 150 },  //madium
     "200": { min: 151, max: 1000 }  // large
 };
-document.getElementById("apply-filters").onclick = function() {
+document.getElementById("apply-filters").onclick = function () {
     const minPrice = parseInt(sliderOne.value);
     const maxPrice = parseInt(sliderTwo.value);
     const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
@@ -64,8 +64,8 @@ document.getElementById("apply-filters").onclick = function() {
     const isSaleOnly = document.getElementById("issale-filter").checked;
 
     filteredProducts = allProducts.map(product => {
-        const categoryMatch = selectedCategories.length === 0 || 
-                             selectedCategories.some(cat => cat.toLowerCase() === product.category.toLowerCase());
+        const categoryMatch = selectedCategories.length === 0 ||
+            selectedCategories.some(cat => cat.toLowerCase() === product.category.toLowerCase());
         const newMatch = !isNewOnly || product.isnew;
         const saleMatch = !isSaleOnly || product.issale;
 
@@ -74,7 +74,7 @@ document.getElementById("apply-filters").onclick = function() {
         const matchingVariant = product.variants.find(v => {
             const p = v.price;
             const numericSize = parseInt(v.size);
-            
+
             const priceMatch = p >= minPrice && p <= maxPrice;
             const stockMatch = !inStockOnly || v.stock > 0;
             const sizeMatch = selectedSizes.length === 0 || selectedSizes.some(sizeKey => {
@@ -90,21 +90,22 @@ document.getElementById("apply-filters").onclick = function() {
     }).filter(p => p !== null);
     currentPage = 1;
     renderPage();
-    
+
     document.getElementById("filter-sidebar").classList.remove("active");
     document.getElementById("filter-overlay").classList.remove("active");
     document.body.classList.remove("no-scroll");
+    document.body.classList.remove("filter-open");
 };
-document.getElementById("clear-filters").onclick = function() {
+document.getElementById("clear-filters").onclick = function () {
     document.querySelectorAll('.sidebar-content input[type="checkbox"]').forEach(cb => cb.checked = false);
-    
+
     sliderOne.value = 0;
     sliderTwo.value = 110;
     slideOne();
     slideTwo();
     filteredProducts = allProducts.map(product => {
         const newProduct = { ...product };
-        delete newProduct.matchedVariant; 
+        delete newProduct.matchedVariant;
         return newProduct;
     });
 

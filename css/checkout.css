@@ -180,6 +180,13 @@
     font-size: 14px;
 }
 
+.checkoutRow:last-child {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #555;
+    font-weight: 500;
+}
+
 .checkoutTotal {
     font-size: 20px;
     font-weight: 600;

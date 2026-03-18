@@ -23,13 +23,19 @@ function renderHomeFilterProducts(productsList) {
     
         <div class="img-container">
         
-            <img class="main-img" src="${productItem.images[0]}">
+            <img class="main-img" src="${productItem.thumbnail}">
             <img class="hover-img" src="${productItem.images[1] ? productItem.images[1] : productItem.images[0]}">
 
             ${productItem.issale ? `<span class="badge sale">Sale</span>` : ""}
             ${productItem.isnew ? `<span class="badge new">New</span>` : ""}
 
             <div class="product-actions">
+
+           <button class="addcart-btn" onclick='addToCart(${JSON.stringify(productItem)})'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+		        <path d="M27 5.25h-22c-0.966 0.001-1.749 0.784-1.75 1.75v18c0.001 0.966 0.784 1.749 1.75 1.75h22c0.966-0.001 1.749-0.784 1.75-1.75v-18c-0.001-0.966-0.784-1.749-1.75-1.75h-0zM5 6.75h22c0.138 0 0.25 0.112 0.25 0.25v2.25h-22.5v-2.25c0-0.138 0.112-0.25 0.25-0.25h0zM27 25.25h-22c-0.138-0-0.25-0.112-0.25-0.25v-14.25h22.5v14.25c-0 0.138-0.112 0.25-0.25 0.25h-0zM21.75 14c0 3.176-2.574 5.75-5.75 5.75s-5.75-2.574-5.75-5.75v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0c0 2.347 1.903 4.25 4.25 4.25s4.25-1.903 4.25-4.25v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0z"></path>
+                </svg>
+                </button>
 
                 <button class="preview-btn" onclick="previewProduct('${productItem.id}')">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" cursorshover="true">
@@ -39,12 +45,6 @@ function renderHomeFilterProducts(productsList) {
 
                 <button class="wishlist-btn" onclick="toggleWishlist(this,'${productItem.id}')">
                 <i class="far fa-heart"></i>
-                </button>
-
-                <button class="addcart-btn" onclick="addToCart('${productItem.id}')">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-		        <path d="M27 5.25h-22c-0.966 0.001-1.749 0.784-1.75 1.75v18c0.001 0.966 0.784 1.749 1.75 1.75h22c0.966-0.001 1.749-0.784 1.75-1.75v-18c-0.001-0.966-0.784-1.749-1.75-1.75h-0zM5 6.75h22c0.138 0 0.25 0.112 0.25 0.25v2.25h-22.5v-2.25c0-0.138 0.112-0.25 0.25-0.25h0zM27 25.25h-22c-0.138-0-0.25-0.112-0.25-0.25v-14.25h22.5v14.25c-0 0.138-0.112 0.25-0.25 0.25h-0zM21.75 14c0 3.176-2.574 5.75-5.75 5.75s-5.75-2.574-5.75-5.75v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0c0 2.347 1.903 4.25 4.25 4.25s4.25-1.903 4.25-4.25v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0z"></path>
-                </svg>
                 </button>
 
             </div>
@@ -72,24 +72,42 @@ function renderHomeFilterProducts(productsList) {
 }
 
 
-
-
-function addToCart(id) {
-
-    var product = homeFilterProductsData.find(function (p) {
-        return p.id == id;
-    });
-
+function addToCart(product, size, quantity) {
+    const finalSize = size || product.variants[0].size;
+    const finalQuantity = parseInt(quantity) || 1;
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let exists = cart.find(item => item.id === product.id);
+
+    const cartItemId = `${product.id}-${finalSize}`;
+    let exists = cart.find(item => item.cartItemId === cartItemId);
+
     if (exists) {
-        exists.quantity++;
+        exists.qty = (parseInt(exists.qty) || 0) + finalQuantity;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        const variant = product.variants.find(v => v.size === finalSize) || product.variants[0];
+        cart.push({
+            id: product.id,
+            name: product.name,
+            thumbnail: product.thumbnail,
+            cartItemId: cartItemId,
+            variant: finalSize,
+            price: variant.price,
+            qty: finalQuantity
+        });
     }
+
     localStorage.setItem("cart", JSON.stringify(cart));
     refreshCartItemCount();
+    showCartModal(`Added ${finalQuantity} units of ${product.name} (${finalSize}) to cart!`);
+}
 
+function showCartModal(message) {
+    const modal = document.getElementById("cart-modal");
+    document.getElementById("modal-message").innerText = message;
+    modal.classList.add("active");
+}
+
+function closeCartModal() {
+    document.getElementById("cart-modal").classList.remove("active");
 }
 function previewProduct(id) {
     var product = homeFilterProductsData.find(function (p) {
@@ -145,7 +163,7 @@ function previewProduct(id) {
           <div class="modal-right">
                 <div class="modal-info">
                     <div class="price-wrapper">
-                        
+                        ${renderPrice(product.variants[0])}
                     </div>
                     <h2 class="modal-title">${product.name}</h2>
                     <p class="modal-desc">${product.description}</p>
@@ -154,10 +172,11 @@ function previewProduct(id) {
                     <div class="modal-actions">
                         <div class="quantity-selector">
                             <button type="button" class="minus">-</button>
-                            <input type="number" value="1" min="1">
-                            <button type="button" class="plus">+</button>
+                           <input type="number" value="1" min="1" 
+                           onkeydown="if(['e', 'E', '+', '-'].includes(event.key)) event.preventDefault();">
+                           <button type="button" class="plus">+</button>
                         </div>
-                        <button class="add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+                        <button class="add-to-cart" title="Add to Cart">Add To Cart</button>
                         <button class="add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                     </div>
                 </div>
@@ -168,7 +187,7 @@ function previewProduct(id) {
     modal.showModal();
 
     const priceWrapper = modal.querySelector('.price-wrapper');
-    priceWrapper.innerHTML = renderPrice(product.variants[0]);
+    // priceWrapper.innerHTML = renderPrice(product.variants[0]);
     const sizeRadios = modal.querySelectorAll('input[name="product-size"]');
 
     sizeRadios.forEach((radio, index) => {
@@ -180,14 +199,20 @@ function previewProduct(id) {
         });
     });
     const qtyInput = modal.querySelector('input[type="number"]');
+    qtyInput.addEventListener('input', function () {
+        if (this.value < 1) this.value = 1;
+    });
     modal.querySelector('.plus').onclick = () => qtyInput.value = parseInt(qtyInput.value) + 1;
     modal.querySelector('.minus').onclick = () => {
         if (qtyInput.value > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
     };
 
     modal.querySelector('.add-to-cart').onclick = () => {
-        addToCart(product.id);
-        alert("Added to cart!");
+        const selectedSize = modal.querySelector('input[name="product-size"]:checked').value;
+        const quantity = parseInt(qtyInput.value);
+
+        addToCart(product, selectedSize, quantity);
+        modal.close();
     };
 
     var modalWishBtn = modal.querySelector('.add-to-wishlist');
@@ -244,7 +269,7 @@ function addToWishlist(id) {
     let totalQuantity = 0;
 
     cartItems.forEach(function (cartItem) {
-        totalQuantity += cartItem.quantity;
+        totalQuantity += cartItem.qty;
     });
 
     const cartCounterElement = document.querySelector(".cart-counter");

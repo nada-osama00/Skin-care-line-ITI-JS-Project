@@ -25,7 +25,7 @@ function refreshCartItemCount() {
     let totalQuantity = 0;
 
     cartItems.forEach(function(cartItem){
-        totalQuantity += cartItem.quantity;
+        totalQuantity += cartItem.qty;
     });
 
     const cartCounterElement = document.querySelector(".cart-counter");
